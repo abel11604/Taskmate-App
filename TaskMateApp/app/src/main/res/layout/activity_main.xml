@@ -3,60 +3,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="16dp"
     android:background="@color/white"
+
     >
+
     <ImageView
         android:layout_width="171dp"
         android:layout_height="46dp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="-18dp"
         android:src="@drawable/logo" />
+
+    <!-- Texto de registro -->
+
     <ImageView
         android:layout_width="411dp"
         android:layout_height="277dp"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
-        android:src="@drawable/monito_limpiando" />
-
-
-    <EditText
-        android:id="@+id/email_input"
-        android:layout_width="293dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="16dp"
-        android:hint="Correo electronico"
-        android:inputType="textEmailAddress"
-        android:padding="16dp" />
-
-    <EditText
-        android:id="@+id/password_input"
-        android:layout_width="293dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:hint="Contraseña"
-        android:layout_gravity="center"
-        android:inputType="textPassword"
-        android:padding="16dp" />
-
+        android:src="@drawable/panda1" />
 
     <Button
         android:id="@+id/login_button"
-        android:layout_width="360dp"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="1dp"
         android:backgroundTint="@color/lightSkyBlue"
-        android:layout_gravity="center"
         android:text="@string/login_button"
         android:textColor="@color/white" />
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="16dp">
 
         <TextView
             android:layout_width="wrap_content"
