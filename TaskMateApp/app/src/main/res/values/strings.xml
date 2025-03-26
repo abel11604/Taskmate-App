@@ -52,8 +52,8 @@
     <string name="join_home_title">Unirse a un hogar</string>
     <string name="join_home_description">Consigue un código de invitación de un hogar. Rellena el código y selecciona el botón para unirte.</string>
     <string name="join_home_button">Unirse a un hogar</string>
-    
-    
+
+
     //Menu Layout
     <string name="hello">Hola Jullian</string>
 </resources>
