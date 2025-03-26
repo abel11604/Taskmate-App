@@ -8,12 +8,8 @@
     <string name="password_label">Contraseña</string>
     <string name="confirm_password_label">Confirmar Contraseña</string>
     <string name="login_question">¿Tienes una cuenta?</string>
-    <string name="register_new_home_title">Registrar un nuevo hogar</string>
-    <string name="register_new_home_description">Empieza con un hogar, donde tu serás el administrador y podrás registrar tareas y asignarlas a cada miembro.</string>
-    <string name="register_home_button">Registrar hogar</string>
-    <string name="join_home_title">Unirse a un hogar</string>
-    <string name="join_home_description">Consigue un código de invitación de un hogar. Rellena el código y selecciona el botón para unirte.</string>
-    <string name="join_home_button">Unirse a un hogar</string>
+
+
     <string name="weekly_tasks_title">Tareas semanales</string>
     <string name="view_history_button">Ver historial</string>
     <string name="weekly_tasks_menu">Tareas semanales</string>
@@ -47,4 +43,13 @@
     <string name="logout_button">Cerrar sesión</string>
     <string name="add_profile_picture">Agregar foto de perfil (opcional)</string>
 
+
+    //Inicio layout
+    <string name="bienvenido">Binvenido a Taskmate</string>
+    <string name="register_new_home_title">Registrar un nuevo hogar</string>
+    <string name="register_new_home_description">Empieza con un hogar, donde tu serás el administrador y podrás registrar tareas y asignarlas a cada miembro.</string>
+    <string name="register_home_button">Registrar hogar</string>
+    <string name="join_home_title">Unirse a un hogar</string>
+    <string name="join_home_description">Consigue un código de invitación de un hogar. Rellena el código y selecciona el botón para unirte.</string>
+    <string name="join_home_button">Unirse a un hogar</string>
 </resources>
