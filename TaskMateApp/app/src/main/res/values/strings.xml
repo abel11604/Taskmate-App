@@ -69,4 +69,6 @@
 
     //Registro Activity
     <string name="add_profile_picture">Agregar foto de perfil (opcional)</string>
+    //Icono Etiqueta
+    <string name="gray_tag_description">Gray tag</string>
 </resources>

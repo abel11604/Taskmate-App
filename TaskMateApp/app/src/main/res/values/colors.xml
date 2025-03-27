@@ -11,5 +11,7 @@
     <color name="red">#EA1B1F</color>
     <color name="mediumGrey">#CCCCCC</color>
     <color name="black">#FF000000</color>
-
+    <color name="grey">#827F7F</color>
+    <color name="lightSkyGrey">#A3A3A3</color>
+    <color name="lightGrey2">#F2F2F2</color>
 </resources>
