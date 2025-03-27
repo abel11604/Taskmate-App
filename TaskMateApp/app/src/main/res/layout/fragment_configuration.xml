@@ -3,124 +3,141 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".configuration">
+    tools:context=".configuration"
+    android:background="@color/white"
+    >
 
     <LinearLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-
-        android:id="@+id/main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
         android:background="@color/white"
-        android:orientation="vertical"
-        android:padding="16dp"
-        tools:context=".ConifgActivity">
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".member_configuration">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3.25"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:background="@color/white"
-            android:padding="16dp"
-            android:text="@string/settings_title"
-            android:textColor="#212121"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:text="@string/settings_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
         <ImageView
-            android:id="@+id/profileImageView"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="32dp"
-            android:background="@drawable/panda1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center"
+            android:src="@drawable/door"
+            android:background="@drawable/circle_mask"
+            android:clipToOutline="true"
             android:scaleType="centerCrop" />
 
         <LinearLayout
-            android:id="@+id/changeProfileLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/border_box"
+            android:elevation="2dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginStart="18dp">
 
-            android:layout_marginBottom="8dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="16dp">
-
-            <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/panda1" />
-
-            <TextView
-                android:layout_width="0dp"
+            <LinearLayout
+                android:id="@+id/ll_cambiarPerfil"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_weight="1"
-                android:text="@string/change_profile_button"
-                android:textColor="#212121"
-                android:textSize="16sp" />
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:gravity="center_vertical">
 
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/door"
+                    android:clipToOutline="true"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/circle_mask"
+                    android:layout_marginEnd="16dp" />
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cambiar perfil"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/changeHomeLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="16dp">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#DDDDDD" />
 
-            <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:src="@drawable/panda1" />
-
-            <TextView
-                android:layout_width="0dp"
+            <LinearLayout
+                android:id="@+id/ll_cambiarHogar"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_weight="1"
-                android:text="@string/change_home_button"
-                android:textColor="#212121"
-                android:textSize="16sp" />
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:gravity="center_vertical">
 
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/rocket"
+                    android:layout_marginEnd="16dp" />
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cambiar de hogar"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/logoutLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="16dp">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#DDDDDD" />
 
-            <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:src="@drawable/panda1" />
-
-            <TextView
-                android:layout_width="0dp"
+            <LinearLayout
+                android:id="@+id/ll_cerrarSesion"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_weight="1"
-                android:text="@string/logout_button"
-                android:textColor="#212121"
-                android:textSize="16sp" />
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:gravity="center_vertical">
 
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/logout"
+                    android:layout_marginEnd="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cerrar sesión"
+                    android:textSize="16sp" />
+            </LinearLayout>
         </LinearLayout>
+    </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="@drawable/top_shadow" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.75"
+        android:orientation="vertical">
 
     </LinearLayout>
+</LinearLayout>
 </FrameLayout>

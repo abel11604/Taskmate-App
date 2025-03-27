@@ -1,10 +1,12 @@
 package mx.edu.itson.taskmateapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,9 +35,26 @@ class configuration : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_configuration, container, false)
-    }
+        // Inflar el layout para este fragmento
+        val rootView = inflater.inflate(R.layout.fragment_configuration, container, false)
+
+        // Obtener los LinearLayouts por su ID
+        val cambiarHogarLayout: LinearLayout = rootView.findViewById(R.id.ll_cambiarHogar)
+        val cambiarPerfilLayout: LinearLayout = rootView.findViewById(R.id.ll_cambiarPerfil)
+
+        // Establecer OnClickListener para el LinearLayout de "Cambiar Hogar"
+        cambiarHogarLayout.setOnClickListener {
+            val intent = Intent(activity, InicioActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Establecer OnClickListener para el LinearLayout de "Cambiar Perfil"
+        cambiarPerfilLayout.setOnClickListener {
+            val intent = Intent(activity, RegistroActivity::class.java)
+            startActivity(intent)
+        }
+
+        return rootView  }
 
     companion object {
         /**

@@ -40,19 +40,14 @@
                 android:textColor="@color/black"
                 android:layout_marginEnd="8dp"/>
 
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_check"
-                />
         </LinearLayout>
 
-        <!-- Tarea asignada -->
+
         <LinearLayout
+            android:id="@+id/layoutTarea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-
         android:padding="16dp"
         android:layout_marginBottom="16dp">
 
@@ -69,7 +64,12 @@
             android:layout_height="24dp"
             android:src="@drawable/ic_user"
             android:layout_marginStart="8dp"/>
-    </LinearLayout>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_check" />
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/fab_add_task"

@@ -1,10 +1,14 @@
 package mx.edu.itson.taskmateapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,7 +38,27 @@ class schedule : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_schedule, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_schedule, container, false)
+
+        // Obtener las vistas
+        val taskTextView: LinearLayout = rootView.findViewById(R.id.layoutTarea) // Cambiar ID si es diferente
+        val addButton: ImageView = rootView.findViewById(R.id.fab_add_task)
+
+        // Agregar el OnClickListener para el TextView de la tarea
+        taskTextView.setOnClickListener {
+            // Crear la intención para abrir la actividad AgregarTareaActivity
+            val intent = Intent(activity, AgregarTareaActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Agregar el OnClickListener para el ícono de agregar tarea
+        addButton.setOnClickListener {
+            // Crear la intención para abrir la actividad AgregarTareaActivity
+            val intent = Intent(activity, AgregarTareaActivity::class.java)
+            startActivity(intent)
+        }
+
+        return rootView
     }
 
     companion object {
