@@ -1,35 +1,53 @@
 package mx.edu.itson.taskmateapp
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.navigation.ui.NavigationUI
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.navigation.fragment.NavHostFragment
+import androidx.fragment.app.Fragment
+import mx.edu.itson.taskmateapp.databinding.ActivityMainBinding
+import mx.edu.itson.taskmateapp.databinding.ActivityMenuBinding
+
 
 class MenuActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMenuBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_menu)
+        binding = ActivityMenuBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        replaceFragment(inicio())
 
-        // Ajuste de padding para las barras del sistema
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+
+        binding.bottomNavigationView.setOnItemSelectedListener {
+
+            when(it.itemId){
+
+                R.id.page_inicio -> replaceFragment(inicio())
+                R.id.page_activities -> replaceFragment(activities())
+                R.id.page_schedule -> replaceFragment(schedule())
+                R.id.page_members -> replaceFragment(group())
+                R.id.page_configuration -> replaceFragment(configuration())
+
+                else ->{
+
+
+                }
+
+            }
+
+            true
+
         }
 
-        setupNavigation()
     }
 
-    private fun setupNavigation() {
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottonNavigation)
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
-        val navController = navHostFragment.navController
+    private fun replaceFragment(fragment : Fragment){
 
-        NavigationUI.setupWithNavController(bottomNavigationView, navController)
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frame_layout,fragment)
+        fragmentTransaction.commit()
+
+
     }
 }

@@ -20,6 +20,8 @@
             android:exported="false" />
 
         <activit
+
+        <activity
             android:name=".ActualizarTareaActivity"
             android:exported="false" />
 

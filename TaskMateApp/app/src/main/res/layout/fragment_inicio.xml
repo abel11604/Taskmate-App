@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+    tools:context=".inicio">
 
     <LinearLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
-
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -40,37 +39,37 @@
                 android:layout_centerVertical="true"
                 android:scaleType="centerCrop"
 
-                 />
+                />
 
         </RelativeLayout>
+    </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="16dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:paddingTop="16dp"
-            android:gravity="center_vertical">
+            android:layout_weight="1"
+            android:text="Tareas semanales"
+            android:textStyle="bold"
+            android:textSize="18sp" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Tareas semanales"
-                android:textStyle="bold"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/btn_ver_historial"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ver historial >"
-                android:textSize="14sp"
-                android:clickable="true"
-                android:focusable="true" />
-
-        </LinearLayout>
+        <TextView
+            android:id="@+id/btn_ver_historial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ver historial >"
+            android:textSize="14sp"
+            android:clickable="true"
+            android:focusable="true" />
 
     </LinearLayout>
 </FrameLayout>
