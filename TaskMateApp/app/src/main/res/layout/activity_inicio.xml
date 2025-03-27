@@ -25,7 +25,7 @@
 
     <ImageView
         android:id="@+id/imgTendedero"
-        android:layout_width="match_parent"
+        android:layout_width="431dp"
         android:layout_height="444dp"
         app:srcCompat="@drawable/tendedero" />
 
@@ -113,6 +113,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <EditText
+                android:id="@+id/editTextHomeCode"
+                android:layout_width="164dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="@color/lightGrey"
+                android:hint="Código de casa"
+                android:inputType="text"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
             <LinearLayout
                 android:id="@+id/btn_registar_hogar"
                 android:layout_width="wrap_content"
@@ -146,10 +161,6 @@
 
         </RelativeLayout>
 
-
-
     </LinearLayout>
-
-
 
 </LinearLayout>

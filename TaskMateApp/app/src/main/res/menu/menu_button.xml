@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/page_inicio"
+        android:title="inicio"
+        android:icon="@drawable/home"
+        />
+
+    <item
+        android:id="@+id/page_activities"
+        android:title="activities"
+        android:icon="@drawable/tareas"
+       />
+
+    <item
+        android:id="@+id/page_schedule"
+        android:title="schedule"
+        android:icon="@drawable/calendar"
+         />
+
+    <item
+        android:id="@+id/page_members"
+        android:title="members"
+        android:icon="@drawable/users"
+         />
+
+    <item
+        android:id="@+id/page_configuration"
+        android:title="configuration"
+        android:icon="@drawable/settings"
+         />
+</menu>

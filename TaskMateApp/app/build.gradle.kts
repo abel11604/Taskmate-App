@@ -44,6 +44,8 @@ dependencies {
     implementation ("org.imaginativeworld.whynotimagecarousel:whynotimagecarousel:2.1.0")
     implementation(libs.androidx.activity)
     implementation ("androidx.constraintlayout:constraintlayout:2.0.4")
+    implementation ("androidx.navigation:navigation-fragment:2.5.3")
+    implementation ("androidx.navigation:navigation-ui:2.5.3")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
