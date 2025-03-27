@@ -16,6 +16,10 @@
             android:name=".HistorialActivity"
             android:exported="false" />
         <activity
+
+            android:name=".SignInActivity"
+            android:exported="false" />
+        <activity
             android:name=".MenuActivity"
             android:exported="false" />
         <activity

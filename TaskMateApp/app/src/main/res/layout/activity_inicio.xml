@@ -14,11 +14,12 @@
         android:layout_gravity="center_horizontal"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/bienvenido" />
+        <ImageView
+            android:layout_width="171dp"
+            android:layout_height="46dp"
+            android:layout_marginLeft="-18dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/logo" />
 
     </LinearLayout>
 
@@ -53,9 +54,10 @@
 
             <LinearLayout
                 android:id="@+id/btn_unirse_hogar"
-                android:layout_width="wrap_content"
+                android:layout_width="165dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
+                android:background="@color/lightBlue"
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="center_vertical"
@@ -75,8 +77,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:textColor="@color/lightSkyBlue"
+                    android:layout_marginRight="1dp"
                     android:text="@string/register_home_button"
+                    android:textColor="@color/lightSkyBlue"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -122,6 +125,7 @@
                 android:paddingStart="16dp"
                 android:paddingTop="8dp"
                 android:paddingEnd="16dp"
+                android:background="@color/lightBlue"
                 android:paddingBottom="8dp">
 
                 <ImageView
