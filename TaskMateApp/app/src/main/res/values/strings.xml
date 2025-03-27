@@ -8,8 +8,6 @@
     <string name="password_label">Contraseña</string>
     <string name="confirm_password_label">Confirmar Contraseña</string>
     <string name="login_question">¿Tienes una cuenta?</string>
-
-
     <string name="weekly_tasks_title">Tareas semanales</string>
     <string name="view_history_button">Ver historial</string>
     <string name="weekly_tasks_menu">Tareas semanales</string>
@@ -20,14 +18,8 @@
     <string name="update_button">Actualizar</string>
     <string name="register_button2">Registrar</string>
     <string name="program_tasks_menu">Programar actividades</string>
-    <string name="schedule_task_title">Programa la tarea</string>
-    <string name="repeat_task_option">Repetir semanalmente</string>
-    <string name="no_repeat_option">No repetir</string>
-    <string name="membros_label">Miembros</string>
-    <string name="select_members_label">Selecciona los miembros que harán la tarea</string>
     <string name="tasks_label">Tareas</string>
-    <string name="select_task_label">Selecciona la tarea a programar</string>
-    <string name="schedule_task_button">Programar tarea</string>
+
     <string name="save_changes_button">Guardar cambios</string>
     <string name="cancel_button">Cancelar</string>
     <string name="team_title">Equipo</string>
@@ -56,4 +48,18 @@
 
     //Menu Layout
     <string name="hello">Hola Jullian</string>
+
+
+    //Agregar Tarea
+    <string name="schedule_task_title">Programa la tarea</string>
+    <string name="select_options">Elige entre estas opciones para programar la tarea</string>
+    <string name="repeat_task_option">Repetir semanalmente</string>
+    <string name="no_repeat_option">No repetir</string>
+    <string name="membros_label">Miembros</string>
+    <string name="select_members_label">Selecciona los miembros que harán la tarea</string>
+    <string name="select_task_label">Selecciona la tarea a programar</string>
+    <string name="room">Ordenar el cuarto</string>
+    <string name="iron_clothes">Planchar la ropa</string>
+    <string name="cook_food">Hacer comida</string>
+    <string name="schedule_task_button">Programar tarea</string>
 </resources>
