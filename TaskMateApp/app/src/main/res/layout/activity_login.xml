@@ -73,10 +73,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:gravity="center"
-            android:paintFlags="underline"
             android:text="@string/register_button"
             android:textColor="@color/mediumGrey"
             android:textSize="14sp"
-            android:textStyle="bold" />
+           />
     </LinearLayout>
 </LinearLayout>

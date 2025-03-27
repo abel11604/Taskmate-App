@@ -30,8 +30,8 @@
         android:layout_marginTop="10dp"
         android:layout_gravity="center"
         android:scaleType="centerCrop"
-        app:layout_constraintCircleCrop="true"
-        app:srcCompat="@android:drawable/presence_online" />
+
+        />
 
     <EditText
         android:id="@+id/userEt"

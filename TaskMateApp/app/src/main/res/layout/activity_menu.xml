@@ -34,8 +34,8 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:scaleType="centerCrop"
-            app:layout_constraintCircleCrop="true"
-            app:srcCompat="@android:drawable/presence_online" />
+
+            />
 
     </RelativeLayout>
 
