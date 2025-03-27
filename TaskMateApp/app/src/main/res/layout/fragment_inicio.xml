@@ -90,7 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:cornerRadius="50dp"
+
 
                 android:text="Lun"
                 android:textColor="@color/black"
@@ -101,7 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:cornerRadius="50dp"
+
                 android:text="Mar"
                 android:textColor="@color/black"
                 android:backgroundTint="@color/lightGrey" />
@@ -110,7 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:cornerRadius="50dp"
+
                 android:text="Mié"
                 android:textColor="@color/black"
                 android:backgroundTint="@color/lightGrey" />
@@ -119,7 +119,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:cornerRadius="50dp"
+
                 android:text="Jue"
                 android:textColor="@color/black"
                 android:backgroundTint="@color/lightGrey" />
@@ -128,7 +128,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:cornerRadius="50dp"
+
                 android:text="Vie"
                 android:textColor="@color/black"
                 android:backgroundTint="@color/lightGrey" />
@@ -137,7 +137,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:cornerRadius="50dp"
+
                 android:text="Sáb"
                 android:textColor="@color/black"
                 android:backgroundTint="@color/lightGrey" />
@@ -145,7 +145,7 @@
             <com.google.android.material.button.MaterialButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:cornerRadius="50dp"
+
                 android:text="Dom"
                 android:textColor="@color/black"
                 android:backgroundTint="@color/lightGrey" />
