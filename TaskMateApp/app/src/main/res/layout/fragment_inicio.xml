@@ -4,14 +4,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".inicio">
+    tools:context=".inicio"
+    android:background="@color/white"
+    >
 
     <LinearLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="@color/white"
         >
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -37,39 +41,156 @@
                 android:layout_height="80dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:scaleType="centerCrop"
+
+
 
                 />
 
         </RelativeLayout>
-    </LinearLayout>
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:paddingTop="16dp"
-        android:gravity="center_vertical">
-
-        <TextView
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Tareas semanales"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="16dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tareas semanales"
+                android:textStyle="bold"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/btn_ver_historial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ver historial >"
+                android:textSize="14sp"
+                android:clickable="true"
+                android:focusable="true" />
+
+        </LinearLayout>
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:cornerRadius="50dp"
+
+                android:text="Lun"
+                android:textColor="@color/black"
+                app:iconPadding="8dp"
+                android:backgroundTint="@color/lightGrey" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:cornerRadius="50dp"
+                android:text="Mar"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/lightGrey" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:cornerRadius="50dp"
+                android:text="Mié"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/lightGrey" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:cornerRadius="50dp"
+                android:text="Jue"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/lightGrey" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:cornerRadius="50dp"
+                android:text="Vie"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/lightGrey" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:cornerRadius="50dp"
+                android:text="Sáb"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/lightGrey" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:cornerRadius="50dp"
+                android:text="Dom"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/lightGrey" />
+
+        </LinearLayout>
+        </HorizontalScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Planchando la ropa"
+            android:textSize="18sp"
             android:textStyle="bold"
-            android:textSize="18sp" />
+            android:textColor="@color/black"
+            android:paddingBottom="8dp"
+            android:gravity="start"
+            />
 
-        <TextView
-            android:id="@+id/btn_ver_historial"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ver historial >"
-            android:textSize="14sp"
-            android:clickable="true"
-            android:focusable="true" />
+            <!-- Estado de la tarea -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hoy"
+                    android:textColor="@color/green"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="8dp" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_check"
+                    />
+            </LinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
 </FrameLayout>
