@@ -81,7 +81,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_pink_background"
+                 android:background="@color/lightPink"
                     android:paddingHorizontal="12dp"
                     android:paddingVertical="6dp"
                     android:text="No se hizo"
@@ -148,7 +148,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                        android:background="@color/paleGreen"
                     android:paddingHorizontal="12dp"
                     android:paddingVertical="6dp"
                     android:text="No se hizo"
