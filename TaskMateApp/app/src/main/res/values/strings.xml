@@ -29,7 +29,7 @@
     <string name="admin_permissions_description">Al otorgarle permisos de administrador a cualquier usuario, este podrá editar, programar, asignar, eliminar y agregar tareas</string>
     <string name="tasks_history_title">Tareas</string>
     <string name="task_history_subtitle">Historial de tareas</string>
-    <string name="settings_title">Configuración</string>
+
     <string name="change_profile_button">Cambiar perfil</string>
     <string name="change_home_button">Cambiar de hogar</string>
     <string name="logout_button">Cerrar sesión</string>
@@ -62,4 +62,7 @@
     <string name="iron_clothes">Planchar la ropa</string>
     <string name="cook_food">Hacer comida</string>
     <string name="schedule_task_button">Programar tarea</string>
+
+    //Configuracion Activity
+    <string name="settings_title">Configuración</string>
 </resources>

@@ -9,12 +9,12 @@
     tools:context=".HistorialActivity">
 
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="72dp"
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/baseline_arrow_back_ios_new_24" />
-
+        android:layout_marginBottom="16dp"
+        android:src="?attr/actionModeCloseDrawable" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -63,11 +63,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/lightPink"
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="4dp"
                 android:text="No se hizo"
                 android:textColor="@color/red"
-                android:background="@color/lightPink"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -113,11 +113,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/paleGreen"
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="4dp"
                 android:text="No se hizo"
                 android:textColor="@color/green"
-                android:background="@color/paleGreen"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -167,12 +167,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@color/lightGrey"
                     android:paddingVertical="4dp"
                     android:paddingEnd="8dp"
                     android:text="Pendiente"
                     android:textColor="#616161"
-                    android:background="@color/lightGrey"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -193,12 +193,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@color/lightGrey"
                     android:paddingVertical="4dp"
                     android:paddingEnd="8dp"
                     android:text="Pendiente"
                     android:textColor="#616161"
-                    android:background="@color/lightGrey"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -219,11 +219,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@color/lightGrey"
                     android:paddingVertical="4dp"
                     android:paddingEnd="8dp"
                     android:text="Pendiente"
                     android:textColor="#616161"
-                    android:background="@color/lightGrey"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -245,12 +245,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@color/lightGrey"
                     android:paddingVertical="4dp"
                     android:paddingEnd="8dp"
                     android:text="Pendiente"
                     android:textColor="#616161"
-                    android:background="@color/lightGrey"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
             </LinearLayout>
 
 
