@@ -43,6 +43,7 @@
             android:layout_marginStart="18dp">
 
             <LinearLayout
+                android:id="@+id/ll_cambiarPerfil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -71,6 +72,7 @@
                 android:background="#DDDDDD" />
 
             <LinearLayout
+                android:id="@+id/ll_cambiarHogar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -96,6 +98,7 @@
                 android:background="#DDDDDD" />
 
             <LinearLayout
+                android:id="@+id/ll_cerrarSesion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
