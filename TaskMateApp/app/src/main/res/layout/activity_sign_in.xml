@@ -85,10 +85,36 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_gravity="center"
-        android:backgroundTint="@color/lightSkyBlue"
+        android:background="@drawable/rectangular_button"
+        app:backgroundTint="@null"
         android:padding="16dp"
         android:text="@string/register_button"
         android:textColor="@android:color/white" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/account_question"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/register_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:gravity="center"
+            android:text="@string/login_button"
+            android:textColor="@color/mediumGrey"
+            android:textSize="14sp"
+            />
+    </LinearLayout>
 
 </LinearLayout>

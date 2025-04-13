@@ -35,7 +35,7 @@
             android:layout_height="100dp"
             android:layout_marginTop="50dp"
             android:layout_gravity="center"
-            android:src="@drawable/door"
+            android:src="@drawable/account_circle"
             android:background="@drawable/circle_mask"
             android:clipToOutline="true"
             android:scaleType="centerCrop" />
@@ -61,7 +61,7 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/door"
+                    android:src="@drawable/account_circle"
                     android:clipToOutline="true"
                     android:scaleType="centerCrop"
                     android:background="@drawable/circle_mask"

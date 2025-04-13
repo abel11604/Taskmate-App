@@ -8,25 +8,25 @@
 
     <item
         android:id="@+id/page_activities"
-        android:title="activities"
+        android:title="Tareas"
         android:icon="@drawable/tareas"
        />
 
     <item
         android:id="@+id/page_schedule"
-        android:title="schedule"
+        android:title="Planificador"
         android:icon="@drawable/calendar"
          />
 
     <item
         android:id="@+id/page_members"
-        android:title="group"
+        android:title="Miembros"
         android:icon="@drawable/users"
          />
 
     <item
         android:id="@+id/page_configuration"
-        android:title="configuration"
+        android:title="Configutacion"
         android:icon="@drawable/settings"
          />
 </menu>

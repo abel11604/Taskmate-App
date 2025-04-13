@@ -11,7 +11,6 @@ import androidx.core.view.WindowInsetsCompat
 class SignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_sign_in)
      val signInBtn:Button=findViewById(R.id.register_button)
         signInBtn.setOnClickListener {

@@ -79,21 +79,10 @@
                 android:textColor="#212121"
                 android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/selectedDateTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_weight="1"
-                android:gravity="end"
-                android:text="Lun 24"
-                android:textColor="#757575"
-                android:textSize="14sp" />
-
             <ImageView
                 android:id="@+id/calendarIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="47dp"
+                android:layout_height="13dp"
                 android:layout_marginStart="8dp" />
 
         </LinearLayout>
@@ -247,8 +236,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:backgroundTint="#2196F3"
+        android:background="@drawable/rectangular_button"
+        app:backgroundTint="@null"
         android:text="@string/schedule_task_button"
-        android:textColor="#FFFFFF" />
+        />
 
 </LinearLayout>

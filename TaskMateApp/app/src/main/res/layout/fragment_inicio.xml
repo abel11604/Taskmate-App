@@ -89,108 +89,117 @@
             <com.google.android.material.button.MaterialButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-
-
                 android:text="Lun"
                 android:textColor="@color/black"
-                app:iconPadding="8dp"
-                android:backgroundTint="@color/lightGrey" />
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/day_button_bg"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                app:backgroundTint="@null"
+                />
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-
                 android:text="Mar"
                 android:textColor="@color/black"
-                android:backgroundTint="@color/lightGrey" />
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/day_button_bg"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                app:backgroundTint="@null"
+                />
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-
                 android:text="Mié"
                 android:textColor="@color/black"
-                android:backgroundTint="@color/lightGrey" />
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/day_button_bg"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                app:backgroundTint="@null"/>
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-
                 android:text="Jue"
                 android:textColor="@color/black"
-                android:backgroundTint="@color/lightGrey" />
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/day_button_bg"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                app:backgroundTint="@null"
+                />
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-
                 android:text="Vie"
                 android:textColor="@color/black"
-                android:backgroundTint="@color/lightGrey" />
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/day_button_bg"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                app:backgroundTint="@null" />
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-
                 android:text="Sáb"
                 android:textColor="@color/black"
-                android:backgroundTint="@color/lightGrey" />
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/day_button_bg"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                app:backgroundTint="@null" />
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:text="Dom"
                 android:textColor="@color/black"
-                android:backgroundTint="@color/lightGrey" />
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/day_button_bg"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                app:backgroundTint="@null"
+                />
 
         </LinearLayout>
         </HorizontalScrollView>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingTop="16dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Planchando la ropa"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:paddingBottom="8dp"
-            android:gravity="start"
-            />
 
-            <!-- Estado de la tarea -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hoy"
-                    android:textColor="@color/green"
-                    android:textSize="14sp"
-                    android:layout_marginEnd="8dp" />
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_check"
-                    />
-            </LinearLayout>
         </LinearLayout>
-
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTareas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:padding="8dp"
+            android:layout_margin="8dp"
+            tools:listitem="@layout/tareas_pendientes_item">
+        </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
 </FrameLayout>

@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/white"
-    >
+    android:background="@color/white">
     <ImageView
         android:layout_width="171dp"
         android:layout_height="46dp"
@@ -27,6 +27,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="16dp"
         android:hint="Correo electronico"
+        android:background="@color/lightGrey"
         android:inputType="textEmailAddress"
         android:padding="16dp" />
 
@@ -36,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:hint="Contraseña"
+        android:background="@color/lightGrey"
         android:layout_gravity="center"
         android:inputType="textPassword"
         android:padding="16dp" />
@@ -47,7 +49,8 @@
         android:layout_height="48dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="1dp"
-        android:backgroundTint="@color/lightSkyBlue"
+        android:background="@drawable/rectangular_button"
+        app:backgroundTint="@null"
         android:layout_gravity="center"
         android:text="@string/login_button"
         android:textColor="@color/white" />

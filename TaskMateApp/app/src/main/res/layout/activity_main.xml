@@ -33,9 +33,10 @@
         android:layout_marginTop="40dp"
         android:layout_gravity="center"
         android:layout_marginBottom="1dp"
-        android:backgroundTint="@color/lightSkyBlue"
+        android:background="@drawable/rectangular_button"
+        app:backgroundTint="@null"
         android:text="@string/login_button"
-        android:textColor="@color/white" />
+         />
 
     <LinearLayout
         android:layout_width="wrap_content"

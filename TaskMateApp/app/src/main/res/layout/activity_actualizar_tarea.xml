@@ -93,12 +93,11 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:background="@null"
-            android:hint="Nombre"
+            android:hint=" "
             android:imeOptions="actionDone"
             android:inputType="text"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:text="Ordenar el cuarto"
             android:textColor="@color/grey"
             android:textSize="16sp" />
     </RelativeLayout>
