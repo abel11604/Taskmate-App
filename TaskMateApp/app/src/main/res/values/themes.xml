@@ -5,8 +5,8 @@
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryVariant">@color/lightSkyBlue</item>
         <item name="colorOnPrimary">@color/white</item>
-        <item name="colorSecondaryContainer">@color/lightSkyBlue</item>
-        
+        <item name="colorSecondaryContainer">@color/lightBlue</item>
+
     </style>
     <style name="Theme.TaskMateApp" parent="Base.Theme.TaskMateApp" />
 
