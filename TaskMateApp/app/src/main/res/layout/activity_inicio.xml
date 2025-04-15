@@ -59,7 +59,20 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
+            <EditText
+                android:id="@+id/editTextHomeName"
+                android:layout_width="164dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="@color/lightGrey"
+                android:hint="Nombre de la casa"
+                android:inputType="text"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
             <LinearLayout
                 android:id="@+id/btn_unirse_hogar"
                 android:layout_width="165dp"
@@ -175,5 +188,16 @@
         </RelativeLayout>
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/errorTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Error: datos inválidos"
+        android:textColor="@color/red"
+        android:textSize="14sp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:paddingTop="16dp"/>
 
 </LinearLayout>
