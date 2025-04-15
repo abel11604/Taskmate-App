@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -38,13 +40,36 @@ class inicio : Fragment() {
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_inicio, container, false)
 
+
         val historialBtn: TextView = rootView.findViewById(R.id.btn_ver_historial)
-
-
         historialBtn.setOnClickListener {
             val intent = Intent(activity, HistorialActivity::class.java)
             startActivity(intent)
         }
+
+
+        val recyclerView: RecyclerView = rootView.findViewById(R.id.rvTareas)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+
+        // Datos de prueba para las tareas
+        val taskList = listOf(
+            Task("Planchar la ropa", "Descripción de planchar la ropa"),
+            Task("Ordenar el cuarto", "Descripción de ordenar el cuarto"),
+            Task("Hacer comida", "Descripción de hacer comida"),
+            Task("Planchar la ropa", "Descripción de planchar la ropa"),
+            Task("Ordenar el cuarto", "Descripción de ordenar el cuarto"),
+            Task("Planchar la ropa", "Descripción de planchar la ropa"),
+            Task("Ordenar el cuarto", "Descripción de ordenar el cuarto"),
+            Task("Planchar la ropa", "Descripción de planchar la ropa"),
+            Task("Ordenar el cuarto", "Descripción de ordenar el cuarto"),
+            Task("Planchar la ropa", "Descripción de planchar la ropa"),
+            Task("Ordenar el cuarto", "Descripción de ordenar el cuarto"),
+
+
+        )
+
+        val adapter = TaskAdapter(taskList)
+        recyclerView.adapter = adapter
 
         return rootView
     }

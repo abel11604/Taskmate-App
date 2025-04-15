@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "967993116526",
+    "project_id": "taskmate-43b96",
+    "storage_bucket": "taskmate-43b96.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:967993116526:android:19ae8c74814ab8fbaf237f",
+        "android_client_info": {
+          "package_name": "mx.edu.itson.taskmateapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQ1zZ9jBEVHIuFtNt0CMGZUu5YXldIxns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
