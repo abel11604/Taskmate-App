@@ -9,27 +9,22 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.button.MaterialButton
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [inicio.newInstance] factory method to
- * create an instance of this fragment.
- */
+private const val ARG_USUARIO = "usuario"
+private const val ARG_HOGAR = "hogar"
+
 class inicio : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private var usuario: Usuario? = null
+    private var hogar: Hogar? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            usuario = it.getSerializable(ARG_USUARIO) as? Usuario
+            hogar = it.getSerializable(ARG_HOGAR) as? Hogar
         }
 
     }
@@ -38,20 +33,47 @@ class inicio : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val rootView = inflater.inflate(R.layout.fragment_inicio, container, false)
+
+        return inflater.inflate(R.layout.fragment_inicio, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val bienvenida: TextView = view.findViewById(R.id.greetingTextView)
+        bienvenida.text = "Hola " + (usuario?.username ?: " ")
+
+        val diaTextView: TextView = view.findViewById(R.id.dia)
 
 
-        val historialBtn: TextView = rootView.findViewById(R.id.btn_ver_historial)
+        val btnLun = view.findViewById<MaterialButton>(R.id.btnLun)
+        val btnMar = view.findViewById<MaterialButton>(R.id.btnMar)
+        val btnMie = view.findViewById<MaterialButton>(R.id.btnMie)
+        val btnJue = view.findViewById<MaterialButton>(R.id.btnJue)
+        val btnVie = view.findViewById<MaterialButton>(R.id.btnVie)
+        val btnSab = view.findViewById<MaterialButton>(R.id.btnSab)
+        val btnDom = view.findViewById<MaterialButton>(R.id.btnDom)
+
+
+        btnLun.setOnClickListener { diaTextView.text = "Lunes" }
+        btnMar.setOnClickListener { diaTextView.text = "Martes" }
+        btnMie.setOnClickListener { diaTextView.text = "Miércoles" }
+        btnJue.setOnClickListener { diaTextView.text = "Jueves" }
+        btnVie.setOnClickListener { diaTextView.text = "Viernes" }
+        btnSab.setOnClickListener { diaTextView.text = "Sábado" }
+        btnDom.setOnClickListener { diaTextView.text = "Domingo" }
+
+        val historialBtn: TextView = view.findViewById(R.id.btn_ver_historial)
         historialBtn.setOnClickListener {
             val intent = Intent(activity, HistorialActivity::class.java)
             startActivity(intent)
         }
 
 
-        val recyclerView: RecyclerView = rootView.findViewById(R.id.rvTareas)
+        val recyclerView: RecyclerView = view.findViewById(R.id.rvTareas)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        // Datos de prueba para las tareas
+
         val taskList = listOf(
             Task("Planchar la ropa", "Descripción de planchar la ropa"),
             Task("Ordenar el cuarto", "Descripción de ordenar el cuarto"),
@@ -63,33 +85,22 @@ class inicio : Fragment() {
             Task("Planchar la ropa", "Descripción de planchar la ropa"),
             Task("Ordenar el cuarto", "Descripción de ordenar el cuarto"),
             Task("Planchar la ropa", "Descripción de planchar la ropa"),
-            Task("Ordenar el cuarto", "Descripción de ordenar el cuarto"),
-
-
+            Task("Ordenar el cuarto", "Descripción de ordenar el cuarto")
         )
+
 
         val adapter = TaskAdapter(taskList)
         recyclerView.adapter = adapter
-
-        return rootView
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment inicio.
-         */
-        // TODO: Rename and change types and number of parameters
+
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(usuario: Usuario, hogar: Hogar) =
             inicio().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putSerializable(ARG_USUARIO, usuario)
+                    putSerializable(ARG_HOGAR, hogar)
                 }
             }
     }

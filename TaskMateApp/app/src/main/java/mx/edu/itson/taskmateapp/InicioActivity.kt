@@ -30,7 +30,7 @@ class InicioActivity : AppCompatActivity() {
         val codigoCasa=findViewById<EditText>(R.id.editTextHomeCode)
 
         if (usuario != null) {
-            userTextView.text = usuario.id
+            userTextView.text = usuario.username
         } else {
             userTextView.text = "Usuario"
         }
@@ -46,7 +46,7 @@ class InicioActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
             val accessCode = generateAccessCode()
-
+            
             val hogarData = hashMapOf(
                 "nombreHogar" to nombreCasa,
                 "accesoCodigo" to accessCode,
@@ -94,6 +94,7 @@ class InicioActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+
             db.collection("hogares")
                 .whereEqualTo("accesoCodigo", casaCodigo)
                 .get()
@@ -110,12 +111,34 @@ class InicioActivity : AppCompatActivity() {
                             "id_usuario" to (usuario?.id ?: ""),
                             "rol" to "Habitante"
                         )
-
-                        hogarDoc.reference.update("usuarios_asignados", com.google.firebase.firestore.FieldValue.arrayUnion(usuarioAsignado))
+                        hogarDoc.reference.update("usuarios_asignados",
+                            com.google.firebase.firestore.FieldValue.arrayUnion(usuarioAsignado))
                             .addOnSuccessListener {
+                                val nombreHogar = hogarDoc.getString("nombreHogar") ?: ""
+                                val accesoCodigo = hogarDoc.getString("accesoCodigo") ?: ""
+
+                                val usuariosAsignadosData = hogarDoc.get("usuarios_asignados") as? List<Map<String, Any>> ?: emptyList()
+                                val usuariosAsignados = usuariosAsignadosData.map { map ->
+                                    UsuarioAsignado(
+                                        id_usuario = map["id_usuario"] as? String ?: "",
+                                        rol = map["rol"] as? String ?: ""
+                                    )
+                                }
+                                val tareas = hogarDoc.get("tareas") as? List<Tarea> ?: emptyList()
+                                val tareasAsignadas = hogarDoc.get("tareasAsignadas") as? List<TareaAsignada> ?: emptyList()
+
+                                val hogar = Hogar(
+                                    id = hogarId,
+                                    accesoCodigo = accesoCodigo,
+                                    nombreHogar = nombreHogar,
+                                    usuariosAsignados = usuariosAsignados,
+                                    tareas = tareas,
+                                    tareasAsignadas = tareasAsignadas
+                                )
+
 
                                 val intent = Intent(this, MenuActivity::class.java)
-                                intent.putExtra("hogarId", hogarId)
+                                intent.putExtra("hogar", hogar)
                                 intent.putExtra("usuario", usuario)
                                 startActivity(intent)
                             }

@@ -16,27 +16,22 @@ class MenuActivity : AppCompatActivity() {
         setContentView(binding.root)
         replaceFragment(inicio())
 
-
+        val usuario = intent.getSerializableExtra("usuario") as? Usuario
+        val hogar = intent.getSerializableExtra("hogar") as? Hogar
 
         binding.bottomNavigationView.setOnItemSelectedListener {
 
-            when(it.itemId){
-
-                R.id.page_inicio -> replaceFragment(inicio())
-                R.id.page_activities -> replaceFragment(activities())
-                R.id.page_schedule -> replaceFragment(schedule())
-                R.id.page_members -> replaceFragment(group())
-                R.id.page_configuration -> replaceFragment(configuration())
-
-                else ->{
-
-
+            if (usuario != null && hogar != null) {
+                when (it.itemId) {
+                    R.id.page_inicio -> replaceFragment(inicio.newInstance(usuario, hogar))
+                    R.id.page_activities -> replaceFragment(activities.newInstance(usuario, hogar))
+                    R.id.page_schedule -> replaceFragment(schedule.newInstance(usuario, hogar))
+                    R.id.page_members -> replaceFragment(group.newInstance(usuario, hogar))
+                    R.id.page_configuration -> replaceFragment(configuration.newInstance(usuario, hogar))
+                    else -> {}
                 }
-
             }
-
             true
-
         }
 
     }
