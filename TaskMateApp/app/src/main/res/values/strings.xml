@@ -10,7 +10,7 @@
     <string name="login_question">¿Tienes una cuenta?</string>
 
     <string name="view_history_button">Ver historial</string>
-    <string name="weekly_tasks_menu">Tareas semanales</string>
+    <string name="weekly_tasks_menu">Tareas</string>
     <string name="create_task_button">Crear Tarea</string>
     <string name="edit_task_title">Editar tarea</string>
     <string name="task_name_label">Nombre de la actividad</string>

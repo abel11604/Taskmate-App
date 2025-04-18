@@ -2,6 +2,7 @@ package mx.edu.itson.taskmateapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -10,6 +11,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 
@@ -23,18 +26,54 @@ class InicioActivity : AppCompatActivity() {
 
         val usuario = intent.getSerializableExtra("usuario") as? Usuario
         val editTextHomeName=findViewById<EditText>(R.id.editTextHomeName)
-        val userTextView = findViewById<TextView>(R.id.user)
+
         val btnUnirseHogar: LinearLayout = findViewById(R.id.btn_unirse_hogar)
         val btnRegistrarHogar: LinearLayout = findViewById(R.id.btn_registar_hogar)
         val errorTextView=findViewById<TextView>(R.id.errorTextView)
         val codigoCasa=findViewById<EditText>(R.id.editTextHomeCode)
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewCasas)
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
         if (usuario != null) {
-            userTextView.text = usuario.username
-        } else {
-            userTextView.text = "Usuario"
-        }
+            db.collection("hogares")
+                .get()
+                .addOnSuccessListener { result ->
+                    val hogaresDelUsuario = mutableListOf<Hogar>()
+                    for (document in result) {
+                        val usuariosAsignados = document.get("usuarios_asignados") as? List<Map<String, Any>> ?: continue
 
+                        if (usuariosAsignados.any { it["id_usuario"] == usuario.id }) {
+                            val hogar = Hogar(
+                                id = document.id,
+                                accesoCodigo = document.getString("accesoCodigo") ?: "",
+                                nombreHogar = document.getString("nombreHogar") ?: "",
+                                usuariosAsignados = usuariosAsignados.map {
+                                    UsuarioAsignado(
+                                        it["id_usuario"] as? String ?: "",
+                                        it["rol"] as? String ?: ""
+                                    )
+                                },
+                                tareas = emptyList(), // puedes cargar después si quieres
+                                tareasAsignadas = emptyList()
+                            )
+                            hogaresDelUsuario.add(hogar)
+                        }
+                    }
+
+                    if (hogaresDelUsuario.isNotEmpty()) {
+                        recyclerView.visibility = View.VISIBLE
+                        recyclerView.adapter = HogarAdapter(hogaresDelUsuario, usuario) { hogar ->
+                            val intent = Intent(this, MenuActivity::class.java)
+                            intent.putExtra("usuario", usuario)
+                            intent.putExtra("hogar", hogar)
+                            startActivity(intent)
+                        }
+                    }
+                }
+                .addOnFailureListener {
+                    Log.e("InicioActivity", "Error al obtener hogares", it)
+                }
+        }
 
 
         btnUnirseHogar.setOnClickListener {

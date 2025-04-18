@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -19,11 +21,11 @@ private const val ARG_HOGAR = "hogar"
  * Use the [activities.newInstance] factory method to
  * create an instance of this fragment.
  */
+
 class activities : Fragment() {
-    // TODO: Rename and change types of parameters
     private var usuario: Usuario? = null
     private var hogar: Hogar? = null
-
+    private lateinit var tasksAdapter: TasksHouseAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,47 +39,60 @@ class activities : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflar el layout para este fragmento
-        val rootView = inflater.inflate(R.layout.fragment_activities, container, false)
+        return inflater.inflate(R.layout.fragment_activities, container, false)
+    }
 
-        // Referencias de los ImageView para editar (asume que los IDs son correctos)
-        val editTask1: ImageView = rootView.findViewById(R.id.imageView4)
-        val editTask2: ImageView = rootView.findViewById(R.id.imageView8)
-        val editTask3: ImageView = rootView.findViewById(R.id.imageView12)
-        val editTask4: ImageView = rootView.findViewById(R.id.imageView13)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        // Asignar OnClickListener para cada ImageView (para editar tarea)
-        editTask1.setOnClickListener {
-            val intent = Intent(activity, ActualizarTareaActivity::class.java)
-            startActivity(intent)
-        }
-        editTask2.setOnClickListener {
-            val intent = Intent(activity, ActualizarTareaActivity::class.java)
-            startActivity(intent)
-        }
-        editTask3.setOnClickListener {
-            val intent = Intent(activity, ActualizarTareaActivity::class.java)
-            startActivity(intent)
-        }
-        editTask4.setOnClickListener {
-            val intent = Intent(activity, ActualizarTareaActivity::class.java)
-            startActivity(intent)
-        }
+        val recyclerView = view.findViewById<RecyclerView>(R.id.tasksRecyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(context)
 
-        // Referencia del botón de crear tarea
-        val createTaskButton: Button = rootView.findViewById(R.id.createTaskButton)
 
-        // Asignar OnClickListener para el botón de crear tarea
+        val listOfTasks = hogar
+            ?.tareas
+            ?.map { Tarea("", it.nombreTarea, it.descripcion) }
+            ?.toMutableList()
+            ?: mutableListOf()
+
+
+        val rolUsuario = hogar?.usuariosAsignados
+            ?.firstOrNull { it.id_usuario == usuario?.id }
+            ?.rol ?: "Habitante"
+
+
+        tasksAdapter = TasksHouseAdapter(
+            tasks = listOfTasks,
+            rolUsuario = rolUsuario,
+            onEditClick = { tarea, pos ->
+                val intent = Intent(activity, ActualizarTareaActivity::class.java).apply {
+                    putExtra("tarea", tarea)
+                }
+                startActivity(intent)
+            },
+            onDeleteClick = { tarea, pos ->
+                tasksAdapter.removeTaskAt(pos)
+            }
+        )
+
+        recyclerView.adapter = tasksAdapter
+
+
+        val createTaskButton: Button = view.findViewById(R.id.createTaskButton)
         createTaskButton.setOnClickListener {
-            val intent = Intent(activity, ActualizarTareaActivity::class.java)
+            val intent = Intent(activity, NuevaTareaCasaActivity::class.java)
+            intent.putExtra("usuario", usuario)
+            intent.putExtra("hogar", hogar)
             startActivity(intent)
         }
 
-        return rootView
+
+        if (rolUsuario != "Administrador") {
+            createTaskButton.visibility = View.GONE
+        }
     }
 
     companion object {
-
         @JvmStatic
         fun newInstance(usuario: Usuario, hogar: Hogar) =
             activities().apply {

@@ -18,7 +18,7 @@ class MenuActivity : AppCompatActivity() {
 
         val usuario = intent.getSerializableExtra("usuario") as? Usuario
         val hogar = intent.getSerializableExtra("hogar") as? Hogar
-
+     //aqui ps dependiendo de que boton del menu piques se va a meter ese fragment al layout
         binding.bottomNavigationView.setOnItemSelectedListener {
 
             if (usuario != null && hogar != null) {

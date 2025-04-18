@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".ActualizarTareaActivity">
-
+    tools:context=".NuevaTareaCasaActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -61,7 +60,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- Rest of your layout... -->
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -184,7 +183,7 @@
 
 
     <Button
-        android:id="@+id/btnActualizar"
+        android:id="@+id/btnAgregar"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -193,9 +192,17 @@
         android:enabled="false"
         android:paddingStart="32dp"
         android:paddingEnd="32dp"
-        android:text="Actualizar tarea"
+        android:text="@string/create_task_button"
         android:textColor="#FFFFFF"
         app:backgroundTint="@null" />
-
-
+    <TextView
+        android:id="@+id/errorTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Error: datos inválidos"
+        android:textColor="@color/red"
+        android:textSize="14sp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:paddingTop="16dp"/>
 </LinearLayout>
