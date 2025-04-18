@@ -39,15 +39,7 @@ class group : Fragment() {
         // Inflar el layout para este fragmento
         val rootView = inflater.inflate(R.layout.fragment_group, container, false)
 
-        // Obtener el LinearLayout por su ID
-        val miembroLayout: LinearLayout = rootView.findViewById(R.id.miembro)
 
-        // Establecer un OnClickListener para el LinearLayout
-        miembroLayout.setOnClickListener {
-            // Crear un Intent para abrir la actividad HistorialActivity
-            val intent = Intent(activity, HistorialActivity::class.java)
-            startActivity(intent)
-        }
 
         return rootView
     }

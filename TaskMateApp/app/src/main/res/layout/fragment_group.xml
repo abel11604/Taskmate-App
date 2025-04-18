@@ -31,11 +31,12 @@
             android:layout_height="wrap_content"/>
 
         <TextView
+            android:id="@+id/nombreHogarTv"
             android:textStyle="bold"
             android:textSize="20sp"
             android:layout_marginTop="40dp"
             android:layout_gravity="center"
-            android:text="@string/home_code"
+            android:text="nombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -62,48 +63,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <LinearLayout
-            android:id="@+id/miembro"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/miembrosRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="12dp"
-            android:background="@drawable/border_box"
-            android:gravity="center_vertical"
-            android:layout_marginBottom="8dp">
-
-            <ImageView
-                android:id="@+id/profile_image"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:src="@drawable/door"
-                android:scaleType="centerCrop"
-                android:layout_marginEnd="12dp"
-                android:background="@drawable/circle_mask"
-                android:clipToOutline="true" />
-
-            <TextView
-                android:id="@+id/user_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Julian Puerta"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:textColor="#000000" />
-
-            <TextView
-                android:id="@+id/user_role"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Admin"
-                android:textStyle="bold"
-                android:textColor="@color/lightSkyBlue"
-                android:background="@color/lightBlue"
-                android:paddingHorizontal="12dp"
-                android:paddingVertical="4dp"
-                android:textSize="14sp" />
-        </LinearLayout >
+            android:layout_margin="16dp"
+            tools:listitem="@layout/item_miembro_hogar" />
 
     </LinearLayout>
 
