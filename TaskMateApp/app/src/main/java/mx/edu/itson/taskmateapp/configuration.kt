@@ -36,26 +36,29 @@ class configuration : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflar el layout para este fragmento
+
         val rootView = inflater.inflate(R.layout.fragment_configuration, container, false)
 
-        // Obtener los LinearLayouts por su ID
+
         val cambiarHogarLayout: LinearLayout = rootView.findViewById(R.id.ll_cambiarHogar)
         val cambiarPerfilLayout: LinearLayout = rootView.findViewById(R.id.ll_cambiarPerfil)
 
-        // Establecer OnClickListener para el LinearLayout de "Cambiar Hogar"
+
         cambiarHogarLayout.setOnClickListener {
-            val intent = Intent(activity, InicioActivity::class.java)
+            val intent = Intent(requireContext(), InicioActivity::class.java)
+            intent.putExtra("usuario", usuario)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
 
-        // Establecer OnClickListener para el LinearLayout de "Cambiar Perfil"
+
         cambiarPerfilLayout.setOnClickListener {
             val intent = Intent(activity, RegistroActivity::class.java)
             startActivity(intent)
         }
 
-        return rootView  }
+        return rootView
+    }
 
     companion object {
 
