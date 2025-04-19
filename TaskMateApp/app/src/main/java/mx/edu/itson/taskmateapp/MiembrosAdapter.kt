@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-
 class MiembrosAdapter(private val miembros: List<UsuarioAsignado>) :
     RecyclerView.Adapter<MiembrosAdapter.MiembroViewHolder>() {
 
@@ -24,11 +23,9 @@ class MiembrosAdapter(private val miembros: List<UsuarioAsignado>) :
 
     override fun onBindViewHolder(holder: MiembroViewHolder, position: Int) {
         val miembro = miembros[position]
-        holder.nombreUsuario.text = miembro.username
+        holder.nombreUsuario.text = miembro.username ?: "Desconocido"  // Si username es null, muestra "Desconocido"
         holder.rolUsuario.text = miembro.rol
-
-
-        holder.imagenPerfil.setImageResource(R.drawable.account_circle)
+        holder.imagenPerfil.setImageResource(R.drawable.account_circle) // Imagen de perfil por defecto
     }
 
     override fun getItemCount(): Int = miembros.size

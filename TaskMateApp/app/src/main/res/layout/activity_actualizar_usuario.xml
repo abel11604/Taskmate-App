@@ -43,20 +43,28 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/errorTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Error: datos inválidos"
+        android:textColor="@color/red"
+        android:textSize="14sp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:paddingTop="16dp"/>
+
 
     <Button
         android:id="@+id/updateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|bottom"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
         android:background="@drawable/rectangular_button"
-        app:backgroundTint="@null"
         android:paddingHorizontal="48dp"
         android:text="@string/update_button"
-        android:textColor="#FFFFFF" />
-
+        android:textColor="#FFFFFF"
+        app:backgroundTint="@null" />
 </LinearLayout>

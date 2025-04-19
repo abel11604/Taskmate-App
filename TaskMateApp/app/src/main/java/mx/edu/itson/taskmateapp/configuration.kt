@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.TextView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -38,11 +39,13 @@ class configuration : Fragment() {
     ): View? {
 
         val rootView = inflater.inflate(R.layout.fragment_configuration, container, false)
-
-
         val cambiarHogarLayout: LinearLayout = rootView.findViewById(R.id.ll_cambiarHogar)
         val cambiarPerfilLayout: LinearLayout = rootView.findViewById(R.id.ll_cambiarPerfil)
+        val usernameTextView: TextView = rootView.findViewById(R.id.username)
 
+        usuario?.let {
+            usernameTextView.text = it.username
+        }
 
         cambiarHogarLayout.setOnClickListener {
             val intent = Intent(requireContext(), InicioActivity::class.java)
@@ -51,9 +54,10 @@ class configuration : Fragment() {
             startActivity(intent)
         }
 
-
         cambiarPerfilLayout.setOnClickListener {
             val intent = Intent(activity, RegistroActivity::class.java)
+            intent.putExtra("usuario", usuario)
+            intent.putExtra("hogar", hogar)
             startActivity(intent)
         }
 

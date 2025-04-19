@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
-
 class InicioActivity : AppCompatActivity() {
     private val db = Firebase.firestore
 
@@ -52,9 +51,7 @@ class InicioActivity : AppCompatActivity() {
                                 val rol = it["rol"] as? String ?: ""
                                 val datosUsuario = listaUsuarios[idUsuario]
                                 UsuarioAsignado(
-                                    id_usuario = idUsuario,
-                                    username = datosUsuario?.getString("username") ?: "Desconocido",
-                                    correo = datosUsuario?.getString("correo") ?: "Desconocido",
+                                    idUsuario = idUsuario,
                                     rol = rol
                                 )
                             }
@@ -103,8 +100,6 @@ class InicioActivity : AppCompatActivity() {
                 "usuarios_asignados" to listOf(
                     hashMapOf(
                         "id_usuario" to (usuario?.id ?: ""),
-                        "username" to (usuario?.username ?: ""),
-                        "correo" to (usuario?.correo ?: ""),
                         "rol" to "Administrador"
                     )
                 ),
@@ -121,9 +116,7 @@ class InicioActivity : AppCompatActivity() {
                         nombreHogar = nombreCasa,
                         usuariosAsignados = listOf(
                             UsuarioAsignado(
-                                id_usuario = usuario?.id ?: "",
-                                username = usuario?.username ?: "",
-                                correo = usuario?.correo ?: "",
+                                idUsuario = usuario?.id ?: "",
                                 rol = "Administrador"
                             )
                         ),
@@ -164,8 +157,6 @@ class InicioActivity : AppCompatActivity() {
 
                         val usuarioAsignado = hashMapOf(
                             "id_usuario" to (usuario?.id ?: ""),
-                            "username" to (usuario?.username ?: ""),
-                            "correo" to (usuario?.correo ?: ""),
                             "rol" to "Habitante"
                         )
 
@@ -175,34 +166,19 @@ class InicioActivity : AppCompatActivity() {
                                 val nombreHogar = hogarDoc.getString("nombreHogar") ?: ""
                                 val accesoCodigo = hogarDoc.getString("accesoCodigo") ?: ""
 
-                                db.collection("usuarios").document(usuario?.id ?: "").get().addOnSuccessListener { docUser ->
-                                    val userName = docUser.getString("username") ?: ""
-                                    val correo = docUser.getString("correo") ?: ""
+                                val hogar = Hogar(
+                                    id = hogarId,
+                                    accesoCodigo = accesoCodigo,
+                                    nombreHogar = nombreHogar,
+                                    usuariosAsignados = emptyList(),
+                                    tareas = emptyList(),
+                                    tareasAsignadas = emptyList()
+                                )
 
-                                    val usuariosAsignadosRaw = hogarDoc.get("usuarios_asignados") as? List<Map<String, Any>> ?: emptyList()
-                                    val usuariosAsignados = usuariosAsignadosRaw.map {
-                                        UsuarioAsignado(
-                                            id_usuario = it["id_usuario"] as? String ?: "",
-                                            username = if (it["id_usuario"] == usuario?.id) userName else "",
-                                            correo = if (it["id_usuario"] == usuario?.id) correo else "",
-                                            rol = it["rol"] as? String ?: ""
-                                        )
-                                    }
-
-                                    val hogar = Hogar(
-                                        id = hogarId,
-                                        accesoCodigo = accesoCodigo,
-                                        nombreHogar = nombreHogar,
-                                        usuariosAsignados = usuariosAsignados,
-                                        tareas = emptyList(),
-                                        tareasAsignadas = emptyList()
-                                    )
-
-                                    val intent = Intent(this, MenuActivity::class.java)
-                                    intent.putExtra("hogar", hogar)
-                                    intent.putExtra("usuario", usuario)
-                                    startActivity(intent)
-                                }
+                                val intent = Intent(this, MenuActivity::class.java)
+                                intent.putExtra("hogar", hogar)
+                                intent.putExtra("usuario", usuario)
+                                startActivity(intent)
                             }
                             .addOnFailureListener { e ->
                                 errorTextView.text = "Error al unirse al hogar: ${e.message}"

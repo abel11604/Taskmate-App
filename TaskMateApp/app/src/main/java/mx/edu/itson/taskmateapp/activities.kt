@@ -57,7 +57,7 @@ class activities : Fragment() {
 
 
         val rolUsuario = hogar?.usuariosAsignados
-            ?.firstOrNull { it.id_usuario == usuario?.id }
+            ?.firstOrNull { it.idUsuario == usuario?.id }
             ?.rol ?: "Habitante"
 
 
