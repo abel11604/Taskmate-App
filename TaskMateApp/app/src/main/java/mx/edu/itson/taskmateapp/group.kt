@@ -92,8 +92,10 @@ class group : Fragment() {
 
         val nombreHogarTv = view.findViewById<TextView>(R.id.nombreHogarTv)
         nombreHogarTv.text = hogar?.nombreHogar ?: "Nombre no disponible"
-    }
+        val codigoHogarTv=view.findViewById<TextView>(R.id.idHogarTv)
+        codigoHogarTv.text=hogar?.accesoCodigo?:"no"
 
+    }
     companion object {
         @JvmStatic
         fun newInstance(usuario: Usuario, hogar: Hogar) =

@@ -47,10 +47,10 @@
             android:src="@drawable/baseline_home_24"/>
 
         <TextView
+            android:id="@+id/idHogarTv"
             android:textStyle="bold"
             android:textSize="20sp"
             android:layout_gravity="center"
-            android:text="LFWP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

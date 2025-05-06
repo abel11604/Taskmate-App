@@ -2,6 +2,7 @@ package mx.edu.itson.taskmateapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -48,44 +49,56 @@ class activities : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.tasksRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
+        hogar?.let { hogarActual ->
+            val tareasRaw = hogarActual.tareas
+            val tasksList = mutableListOf<Tarea>()
 
-        val listOfTasks = hogar
-            ?.tareas
-            ?.map { Tarea("", it.nombreTarea, it.descripcion) }
-            ?.toMutableList()
-            ?: mutableListOf()
+            tareasRaw.forEach { tarea ->
+                val tareaObj = Tarea(
+                    id = tarea.id,
+                    nombreTarea = tarea.nombreTarea ?: "Sin nombre", // Validación importante
+                    descripcion = tarea.descripcion
+                )
+                tasksList.add(tareaObj)
+            }
 
+            val rolUsuario = hogarActual.usuariosAsignados
+                .firstOrNull { it.idUsuario == usuario?.id }
+                ?.rol ?: "Habitante"
+
+            Log.d("Tareas", "Lista de tareas:\n" + tasksList.joinToString("\n") {
+                "- ${it.nombreTarea}: ${it.descripcion}"
+            })
+
+            tasksAdapter = TasksHouseAdapter(
+                tasks = tasksList,
+                rolUsuario = rolUsuario,
+                onEditClick = { tarea, pos ->
+                    val intent = Intent(activity, ActualizarTareaActivity::class.java).apply {
+                        putExtra("tarea", tarea)
+                    }
+                    startActivity(intent)
+                },
+                onDeleteClick = { tarea, pos ->
+                    tasksAdapter.removeTaskAt(pos)
+                }
+            )
+
+            recyclerView.adapter = tasksAdapter
+        }
+
+        val createTaskButton: Button = view.findViewById(R.id.createTaskButton)
+        createTaskButton.setOnClickListener {
+            val intent = Intent(activity, NuevaTareaCasaActivity::class.java).apply {
+                putExtra("usuario", usuario)
+                putExtra("hogar", hogar)
+            }
+            startActivity(intent)
+        }
 
         val rolUsuario = hogar?.usuariosAsignados
             ?.firstOrNull { it.idUsuario == usuario?.id }
             ?.rol ?: "Habitante"
-
-
-        tasksAdapter = TasksHouseAdapter(
-            tasks = listOfTasks,
-            rolUsuario = rolUsuario,
-            onEditClick = { tarea, pos ->
-                val intent = Intent(activity, ActualizarTareaActivity::class.java).apply {
-                    putExtra("tarea", tarea)
-                }
-                startActivity(intent)
-            },
-            onDeleteClick = { tarea, pos ->
-                tasksAdapter.removeTaskAt(pos)
-            }
-        )
-
-        recyclerView.adapter = tasksAdapter
-
-
-        val createTaskButton: Button = view.findViewById(R.id.createTaskButton)
-        createTaskButton.setOnClickListener {
-            val intent = Intent(activity, NuevaTareaCasaActivity::class.java)
-            intent.putExtra("usuario", usuario)
-            intent.putExtra("hogar", hogar)
-            startActivity(intent)
-        }
-
 
         if (rolUsuario != "Administrador") {
             createTaskButton.visibility = View.GONE

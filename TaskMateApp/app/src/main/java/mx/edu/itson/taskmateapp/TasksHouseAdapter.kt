@@ -23,7 +23,7 @@ class TasksHouseAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.tareas_pendientes_item, parent, false)
+            .inflate(R.layout.tareas_casa_item, parent, false)
         return TaskViewHolder(view)
     }
 
@@ -33,12 +33,10 @@ class TasksHouseAdapter(
         holder.taskName.text = tarea.nombreTarea
         holder.taskDescription.text = tarea.descripcion
 
-
         holder.taskName.setOnClickListener {
             holder.taskDescription.visibility =
                 if (holder.taskDescription.visibility == View.GONE) View.VISIBLE else View.GONE
         }
-
 
         if (rolUsuario == "Administrador") {
             holder.editButton.visibility = View.VISIBLE

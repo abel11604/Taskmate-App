@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
+import java.time.LocalDateTime
+
 class InicioActivity : AppCompatActivity() {
     private val db = Firebase.firestore
 
@@ -52,7 +54,54 @@ class InicioActivity : AppCompatActivity() {
                                 val datosUsuario = listaUsuarios[idUsuario]
                                 UsuarioAsignado(
                                     idUsuario = idUsuario,
-                                    rol = rol
+                                    rol = rol,
+                                    username = datosUsuario?.getString("username"),
+                                    correo = datosUsuario?.getString("correo")
+                                )
+                            }
+
+                            val tareasRaw = document.get("tareas") as? List<Map<String, Any>> ?: emptyList()
+                            val tareas = tareasRaw.map {
+                                Tarea(
+                                    id = it["id"] as? String ?: "",
+                                    descripcion = it["descripcion"] as? String ?: "",
+                                    nombreTarea = it["nombreTarea"] as? String ?: "Sin nombre"
+                                )
+                            }
+
+                            val tareasAsignadasRaw = document.get("tareasAsignadas") as? List<Map<String, Any>> ?: emptyList()
+                            val tareasAsignadas = tareasAsignadasRaw.map { tareaMap ->
+                                val tareaData = tareaMap["tarea"] as? Map<String, Any>
+                                val tarea = Tarea(
+                                    id = tareaData?.get("id") as? String ?: "",
+                                    descripcion = tareaData?.get("descripcion") as? String ?: "",
+                                    nombreTarea = tareaData?.get("nombreTarea") as? String ?: "Sin nombre"
+                                )
+
+                                val usuariosRaw = tareaMap["usuariosAsignados"] as? List<Map<String, Any>> ?: emptyList()
+                                val usuarios = usuariosRaw.map { u ->
+                                    UsuarioAsignado(
+                                        idUsuario = u["id_usuario"] as? String ?: "",
+                                        rol = u["rol"] as? String ?: "",
+                                        username = u["username"] as? String,
+                                        correo = u["correo"] as? String
+                                    )
+                                }
+
+                                val horaStr = tareaMap["horaRealizacion"] as? String ?: ""
+                                val horaRealizacion = try {
+                                    LocalDateTime.parse(horaStr)
+                                } catch (e: Exception) {
+                                    LocalDateTime.now()
+                                }
+
+                                TareaAsignada(
+                                    id = tareaMap["id"] as? String ?: "",
+                                    tarea = tarea,
+                                    usuariosAsignados = usuarios,
+                                    horaRealizacion = horaRealizacion,
+                                    estado = tareaMap["estado"] as? String ?: "",
+                                    hogarId = tareaMap["hogarId"] as? String ?: ""
                                 )
                             }
 
@@ -61,8 +110,8 @@ class InicioActivity : AppCompatActivity() {
                                 accesoCodigo = accesoCodigo,
                                 nombreHogar = nombreHogar,
                                 usuariosAsignados = usuariosAsignados,
-                                tareas = emptyList(),
-                                tareasAsignadas = emptyList()
+                                tareas = tareas,
+                                tareasAsignadas = tareasAsignadas
                             )
 
                             hogaresDelUsuario.add(hogar)
@@ -84,6 +133,7 @@ class InicioActivity : AppCompatActivity() {
             }
         }
 
+//para crear casa
         btnUnirseHogar.setOnClickListener {
             errorTextView.visibility = View.GONE
             val nombreCasa = editTextHomeName.text.toString().trim()
@@ -135,6 +185,7 @@ class InicioActivity : AppCompatActivity() {
                 }
         }
 
+  //para unirse a una casa
         btnRegistrarHogar.setOnClickListener {
             errorTextView.visibility = View.GONE
             val casaCodigo = codigoCasa.text.toString().trim()
@@ -157,36 +208,96 @@ class InicioActivity : AppCompatActivity() {
 
                         val usuarioAsignado = hashMapOf(
                             "id_usuario" to (usuario?.id ?: ""),
-                            "rol" to "Habitante"
+                            "rol" to "Habitante",
+                            "username" to (usuario?.username ?: ""),
+                            "correo" to (usuario?.correo ?: "")
                         )
 
-                        hogarDoc.reference.update("usuarios_asignados",
-                            com.google.firebase.firestore.FieldValue.arrayUnion(usuarioAsignado))
-                            .addOnSuccessListener {
-                                val nombreHogar = hogarDoc.getString("nombreHogar") ?: ""
-                                val accesoCodigo = hogarDoc.getString("accesoCodigo") ?: ""
+                        hogarDoc.reference.update(
+                            "usuarios_asignados",
+                            com.google.firebase.firestore.FieldValue.arrayUnion(usuarioAsignado)
+                        ).addOnSuccessListener {
+                            val nombreHogar = hogarDoc.getString("nombreHogar") ?: ""
+                            val accesoCodigo = hogarDoc.getString("accesoCodigo") ?: ""
 
-                                val hogar = Hogar(
-                                    id = hogarId,
-                                    accesoCodigo = accesoCodigo,
-                                    nombreHogar = nombreHogar,
-                                    usuariosAsignados = emptyList(),
-                                    tareas = emptyList(),
-                                    tareasAsignadas = emptyList()
+                            // Usuarios Asignados
+                            val usuariosAsignadosRaw = hogarDoc.get("usuarios_asignados") as? List<Map<String, Any>> ?: emptyList()
+                            val usuariosAsignados = usuariosAsignadosRaw.map { u ->
+                                UsuarioAsignado(
+                                    idUsuario = u["id_usuario"] as? String ?: "",
+                                    rol = u["rol"] as? String ?: "",
+                                    username = u["username"] as? String,
+                                    correo = u["correo"] as? String
+                                )
+                            }
+
+                            // Tareas
+                            val tareasRaw = hogarDoc.get("tareas") as? List<Map<String, Any>> ?: emptyList()
+                            val tareas = tareasRaw.map { t ->
+                                Tarea(
+                                    id = t["id"] as? String ?: "",
+                                    descripcion = t["descripcion"] as? String ?: "",
+                                    nombreTarea = t["nombreTarea"] as? String ?: ""
+                                )
+                            }
+
+                            // Tareas Asignadas
+                            val tareasAsignadasRaw = hogarDoc.get("tareasAsignadas") as? List<Map<String, Any>> ?: emptyList()
+                            val tareasAsignadas = tareasAsignadasRaw.map { tareaMap ->
+                                val tareaData = tareaMap["tarea"] as? Map<String, Any> ?: emptyMap()
+                                val tarea = Tarea(
+                                    id = tareaData["id"] as? String ?: "",
+                                    descripcion = tareaData["descripcion"] as? String ?: "",
+                                    nombreTarea = tareaData["nombreTarea"] as? String ?: ""
                                 )
 
-                                val intent = Intent(this, MenuActivity::class.java)
-                                intent.putExtra("hogar", hogar)
-                                intent.putExtra("usuario", usuario)
-                                startActivity(intent)
+                                val usuariosRaw = tareaMap["usuariosAsignados"] as? List<Map<String, Any>> ?: emptyList()
+                                val usuarios = usuariosRaw.map { u ->
+                                    UsuarioAsignado(
+                                        idUsuario = u["id_usuario"] as? String ?: "",
+                                        rol = u["rol"] as? String ?: "",
+                                        username = u["username"] as? String,
+                                        correo = u["correo"] as? String
+                                    )
+                                }
+
+                                val horaStr = tareaMap["horaRealizacion"] as? String ?: ""
+                                val horaRealizacion = try {
+                                    LocalDateTime.parse(horaStr)
+                                } catch (e: Exception) {
+                                    LocalDateTime.now()
+                                }
+
+                                TareaAsignada(
+                                    id = tareaMap["id"] as? String ?: "",
+                                    tarea = tarea,
+                                    usuariosAsignados = usuarios,
+                                    horaRealizacion = horaRealizacion,
+                                    estado = tareaMap["estado"] as? String ?: "",
+                                    hogarId = tareaMap["hogarId"] as? String ?: ""
+                                )
                             }
-                            .addOnFailureListener { e ->
-                                errorTextView.text = "Error al unirse al hogar: ${e.message}"
-                                errorTextView.visibility = View.VISIBLE
-                            }
+
+                            // Construcción final del objeto Hogar
+                            val hogar = Hogar(
+                                id = hogarId,
+                                accesoCodigo = accesoCodigo,
+                                nombreHogar = nombreHogar,
+                                usuariosAsignados = usuariosAsignados,
+                                tareas = tareas,
+                                tareasAsignadas = tareasAsignadas
+                            )
+
+                            val intent = Intent(this, MenuActivity::class.java)
+                            intent.putExtra("hogar", hogar)
+                            intent.putExtra("usuario", usuario)
+                            startActivity(intent)
+                        }.addOnFailureListener { e ->
+                            errorTextView.text = "Error al unirse al hogar: ${e.message}"
+                            errorTextView.visibility = View.VISIBLE
+                        }
                     }
-                }
-                .addOnFailureListener { e ->
+                }.addOnFailureListener { e ->
                     errorTextView.text = "Error al buscar hogar: ${e.message}"
                     errorTextView.visibility = View.VISIBLE
                 }
