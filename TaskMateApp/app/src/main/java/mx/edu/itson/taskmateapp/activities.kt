@@ -76,6 +76,8 @@ class activities : Fragment() {
                 onEditClick = { tarea, pos ->
                     val intent = Intent(activity, ActualizarTareaActivity::class.java).apply {
                         putExtra("tarea", tarea)
+                        putExtra("hogar", hogar)
+                        putExtra("usuario", usuario)
                     }
                     startActivity(intent)
                 },
