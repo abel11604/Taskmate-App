@@ -38,7 +38,7 @@ class TasksHouseAdapter(
                 if (holder.taskDescription.visibility == View.GONE) View.VISIBLE else View.GONE
         }
 
-        if (rolUsuario == "Administrador") {
+        if (rolUsuario == "Administrador" || rolUsuario == "Moderador") {
             holder.editButton.visibility = View.VISIBLE
             holder.deleteButton.visibility = View.VISIBLE
 
@@ -53,6 +53,7 @@ class TasksHouseAdapter(
             holder.editButton.visibility = View.GONE
             holder.deleteButton.visibility = View.GONE
         }
+
     }
 
     override fun getItemCount(): Int = tasks.size

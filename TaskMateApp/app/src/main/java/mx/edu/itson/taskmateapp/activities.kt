@@ -108,9 +108,8 @@ class activities : Fragment() {
 
                         recyclerView.adapter = tasksAdapter
 
-                        if (rolUsuario != "Administrador") {
-                            createTaskButton.visibility = View.GONE
-                        } else {
+                        if (rolUsuario == "Administrador" || rolUsuario == "Moderador") {
+                            createTaskButton.visibility = View.VISIBLE
                             createTaskButton.setOnClickListener {
                                 val intent = Intent(activity, NuevaTareaCasaActivity::class.java).apply {
                                     putExtra("usuario", user)
@@ -118,11 +117,14 @@ class activities : Fragment() {
                                 }
                                 startActivity(intent)
                             }
+                        } else {
+                            createTaskButton.visibility = View.GONE
+                        }
                         }
                     }
                 }
         }
-    }
+
 
     companion object {
         @JvmStatic

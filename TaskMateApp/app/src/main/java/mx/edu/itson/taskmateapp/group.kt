@@ -49,17 +49,17 @@ class group : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.miembrosRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
+        val nombreHogarTv = view.findViewById<TextView>(R.id.nombreHogarTv)
+        nombreHogarTv.text = hogar?.nombreHogar ?: "Nombre no disponible"
+        val codigoHogarTv = view.findViewById<TextView>(R.id.idHogarTv)
+        codigoHogarTv.text = hogar?.accesoCodigo ?: "no"
+
         hogar?.let { hogarActual ->
             val usuariosAsignadosRaw = hogarActual.usuariosAsignados
-
-            // Crear lista de usuarios completos
             val usuariosList = mutableListOf<UsuarioAsignado>()
-
-            // Obtener los detalles completos de cada usuario desde Firestore
             val db = FirebaseFirestore.getInstance()
             val usuariosRef = db.collection("usuarios")
 
-            // Realizar la consulta para obtener los datos completos de los usuarios
             usuariosAsignadosRaw.forEach { asignado ->
                 val idUsuario = asignado.idUsuario
                 usuariosRef.document(idUsuario).get()
@@ -75,12 +75,21 @@ class group : Fragment() {
                                 correo = correo
                             )
 
-                            // Añadir usuario completo a la lista
                             usuariosList.add(usuarioAsignado)
 
-                            // Cuando se haya recuperado toda la información, actualizamos el RecyclerView
                             if (usuariosList.size == usuariosAsignadosRaw.size) {
-                                recyclerView.adapter = MiembrosAdapter(usuariosList)
+                                recyclerView.adapter = MiembrosAdapter(
+                                    usuariosList,
+                                    usuarioActual = usuario!!,
+                                    hogarActual = hogarActual
+                                ) { usuarioSeleccionado ->
+                                    val intent = Intent(requireContext(), ActualizarRolActivity::class.java).apply {
+                                        putExtra("usuario", usuario)
+                                        putExtra("hogar", hogarActual)
+                                        putExtra("usuarioSeleccionado", usuarioSeleccionado)
+                                    }
+                                    startActivity(intent)
+                                }
                             }
                         }
                     }
@@ -89,13 +98,8 @@ class group : Fragment() {
                     }
             }
         }
-
-        val nombreHogarTv = view.findViewById<TextView>(R.id.nombreHogarTv)
-        nombreHogarTv.text = hogar?.nombreHogar ?: "Nombre no disponible"
-        val codigoHogarTv=view.findViewById<TextView>(R.id.idHogarTv)
-        codigoHogarTv.text=hogar?.accesoCodigo?:"no"
-
     }
+
     companion object {
         @JvmStatic
         fun newInstance(usuario: Usuario, hogar: Hogar) =

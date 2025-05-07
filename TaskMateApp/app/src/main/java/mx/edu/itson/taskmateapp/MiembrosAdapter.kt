@@ -6,27 +6,41 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-class MiembrosAdapter(private val miembros: List<UsuarioAsignado>) :
-    RecyclerView.Adapter<MiembrosAdapter.MiembroViewHolder>() {
+class MiembrosAdapter(
+    private val usuarios: List<UsuarioAsignado>,
+    private val usuarioActual: Usuario,
+    private val hogarActual: Hogar,
+    private val onMiembroClick: (UsuarioAsignado) -> Unit
+) : RecyclerView.Adapter<MiembrosAdapter.ViewHolder>() {
 
-    inner class MiembroViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val imagenPerfil: ImageView = itemView.findViewById(R.id.profile_image)
-        val nombreUsuario: TextView = itemView.findViewById(R.id.user_name)
-        val rolUsuario: TextView = itemView.findViewById(R.id.user_role)
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val nombre = itemView.findViewById<TextView>(R.id.user_name)
+        val rol = itemView.findViewById<TextView>(R.id.user_role)
+        val avatar = itemView.findViewById<ImageView>(R.id.profile_image)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MiembroViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_miembro_hogar, parent, false)
-        return MiembroViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_miembro_hogar, parent, false)
+        return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: MiembroViewHolder, position: Int) {
-        val miembro = miembros[position]
-        holder.nombreUsuario.text = miembro.username ?: "Desconocido"  // Si username es null, muestra "Desconocido"
-        holder.rolUsuario.text = miembro.rol
-        holder.imagenPerfil.setImageResource(R.drawable.account_circle) // Imagen de perfil por defecto
-    }
+    override fun getItemCount(): Int = usuarios.size
 
-    override fun getItemCount(): Int = miembros.size
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val miembro = usuarios[position]
+
+        holder.nombre.text = miembro.username
+        holder.rol.text = miembro.rol
+
+        val esAdmin = hogarActual.usuariosAsignados.firstOrNull { it.idUsuario == usuarioActual.id }?.rol == "Administrador"
+        val esElMismo = miembro.idUsuario == usuarioActual.id
+
+        if (esAdmin && !esElMismo) {
+            holder.itemView.setOnClickListener {
+                onMiembroClick(miembro)
+            }
+        } else {
+            holder.itemView.setOnClickListener(null)
+        }
+    }
 }

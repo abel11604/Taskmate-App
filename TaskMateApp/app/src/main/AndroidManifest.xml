@@ -13,6 +13,9 @@
         android:theme="@style/Theme.TaskMateApp"
         tools:targetApi="31">
         <activity
+            android:name=".ActualizarRolActivity"
+            android:exported="false" />
+        <activity
             android:name=".NuevaTareaCasaActivity"
             android:exported="false" />
         <activity
@@ -35,7 +38,7 @@
             android:exported="false" />
         <activity
             android:name=".MenuActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".InicioActivity"
             android:exported="false" />
