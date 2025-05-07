@@ -9,8 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.FirebaseFirestore
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,61 +51,76 @@ class activities : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.tasksRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        hogar?.let { hogarActual ->
-            val tareasRaw = hogarActual.tareas
-            val tasksList = mutableListOf<Tarea>()
-
-            tareasRaw.forEach { tarea ->
-                val tareaObj = Tarea(
-                    id = tarea.id,
-                    nombreTarea = tarea.nombreTarea ?: "Sin nombre", // Validación importante
-                    descripcion = tarea.descripcion
-                )
-                tasksList.add(tareaObj)
-            }
-
-            val rolUsuario = hogarActual.usuariosAsignados
-                .firstOrNull { it.idUsuario == usuario?.id }
-                ?.rol ?: "Habitante"
-
-            Log.d("Tareas", "Lista de tareas:\n" + tasksList.joinToString("\n") {
-                "- ${it.nombreTarea}: ${it.descripcion}"
-            })
-
-            tasksAdapter = TasksHouseAdapter(
-                tasks = tasksList,
-                rolUsuario = rolUsuario,
-                onEditClick = { tarea, pos ->
-                    val intent = Intent(activity, ActualizarTareaActivity::class.java).apply {
-                        putExtra("tarea", tarea)
-                        putExtra("hogar", hogar)
-                        putExtra("usuario", usuario)
-                    }
-                    startActivity(intent)
-                },
-                onDeleteClick = { tarea, pos ->
-                    tasksAdapter.removeTaskAt(pos)
-                }
-            )
-
-            recyclerView.adapter = tasksAdapter
-        }
-
         val createTaskButton: Button = view.findViewById(R.id.createTaskButton)
-        createTaskButton.setOnClickListener {
-            val intent = Intent(activity, NuevaTareaCasaActivity::class.java).apply {
-                putExtra("usuario", usuario)
-                putExtra("hogar", hogar)
-            }
-            startActivity(intent)
-        }
 
-        val rolUsuario = hogar?.usuariosAsignados
-            ?.firstOrNull { it.idUsuario == usuario?.id }
-            ?.rol ?: "Habitante"
+        val db = FirebaseFirestore.getInstance()
 
-        if (rolUsuario != "Administrador") {
-            createTaskButton.visibility = View.GONE
+        usuario?.let { user ->
+            db.collection("hogares").document(hogar!!.id).get()
+                .addOnSuccessListener { doc ->
+                    val datos = doc.data
+                    if (datos != null) {
+                        val tareasFirebase = datos["tareas"] as? List<Map<String, String>> ?: emptyList()
+                        val tareasActualizadas = tareasFirebase.map {
+                            Tarea(
+                                id = it["id"] ?: "",
+                                nombreTarea = it["nombreTarea"] ?: "Sin nombre",
+                                descripcion = it["descripcion"] ?: ""
+                            )
+                        }.toMutableList()
+
+                        val hogarActualizado = hogar!!.copy(tareas = tareasActualizadas)
+
+                        val rolUsuario = hogarActualizado.usuariosAsignados
+                            .firstOrNull { it.idUsuario == user.id }
+                            ?.rol ?: "Habitante"
+
+                        tasksAdapter = TasksHouseAdapter(
+                            tasks = tareasActualizadas,
+                            rolUsuario = rolUsuario,
+                            onEditClick = { tarea, pos ->
+                                val intent = Intent(activity, ActualizarTareaActivity::class.java).apply {
+                                    putExtra("tarea", tarea)
+                                    putExtra("hogar", hogarActualizado)
+                                    putExtra("usuario", user)
+                                }
+                                startActivity(intent)
+                            },
+                            onDeleteClick = { tarea, pos ->
+                                val nuevasTareas = tareasActualizadas.filter { it.id != tarea.id }
+                                db.collection("hogares").document(hogar!!.id)
+                                    .update("tareas", nuevasTareas.map {
+                                        mapOf(
+                                            "id" to it.id,
+                                            "nombreTarea" to it.nombreTarea,
+                                            "descripcion" to it.descripcion
+                                        )
+                                    })
+                                    .addOnSuccessListener {
+                                        tasksAdapter.removeTaskAt(pos)
+                                        Toast.makeText(requireContext(), "Tarea eliminada", Toast.LENGTH_SHORT).show()
+                                    }
+                                    .addOnFailureListener {
+                                        Toast.makeText(requireContext(), "Error: ${it.message}", Toast.LENGTH_LONG).show()
+                                    }
+                            }
+                        )
+
+                        recyclerView.adapter = tasksAdapter
+
+                        if (rolUsuario != "Administrador") {
+                            createTaskButton.visibility = View.GONE
+                        } else {
+                            createTaskButton.setOnClickListener {
+                                val intent = Intent(activity, NuevaTareaCasaActivity::class.java).apply {
+                                    putExtra("usuario", user)
+                                    putExtra("hogar", hogarActualizado)
+                                }
+                                startActivity(intent)
+                            }
+                        }
+                    }
+                }
         }
     }
 
