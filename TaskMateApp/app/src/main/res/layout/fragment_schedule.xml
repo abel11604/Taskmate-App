@@ -17,7 +17,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Programar actividades"
+            android:text="@string/program_tasks_menu"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/black"
@@ -34,7 +34,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lun 24"
+                android:text="@string/day_of_week"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
@@ -54,7 +54,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Planchar la ropa"
+            android:text="@string/iron_clothes"
             android:textSize="16sp"
             android:textColor="@color/black" />
 
@@ -63,11 +63,13 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/ic_user"
+            android:contentDescription="@string/image_description"
             android:layout_marginStart="8dp"/>
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="@string/image_description"
                 android:src="@drawable/ic_check" />
         </LinearLayout>
 
@@ -76,10 +78,10 @@
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:src="@drawable/baseline_add"
-
-        android:layout_gravity="end|bottom"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"/>
+            android:layout_gravity="end|bottom"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/image_description"
+            android:layout_marginBottom="16dp"/>
 </LinearLayout>
 
 </FrameLayout>

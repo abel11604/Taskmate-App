@@ -13,6 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:contentDescription="@string/image_description"
         android:src="?attr/actionModeCloseDrawable" />
 
     <LinearLayout
@@ -20,7 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:baselineAligned="false">
 
 
         <LinearLayout
@@ -57,7 +59,7 @@
 
         <RadioButton
             android:id="@+id/repeatWeeklyRadioButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingVertical="12dp"
             android:text="@string/repeat_task_option"
@@ -83,6 +85,7 @@
                 android:id="@+id/calendarIcon"
                 android:layout_width="47dp"
                 android:layout_height="13dp"
+                android:contentDescription="@string/image_description"
                 android:layout_marginStart="8dp" />
 
         </LinearLayout>
@@ -94,7 +97,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:baselineAligned="false">
 
 
         <LinearLayout
@@ -134,6 +138,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:scaleType="centerCrop"
+            android:contentDescription="@string/image_description"
             android:src="@drawable/panda1" />
 
         <View
@@ -143,6 +148,7 @@
 
         <ImageView
             android:id="@+id/addMemberButton"
+            android:contentDescription="@string/image_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -156,6 +162,7 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:contentDescription="@string/image_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -192,7 +199,7 @@
 
         <RadioButton
             android:id="@+id/ordenarCuartoRadioButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingVertical="16dp"
             android:text="@string/room"
@@ -206,7 +213,7 @@
 
         <RadioButton
             android:id="@+id/plancharRopaRadioButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingVertical="16dp"
             android:text="@string/iron_clothes"
@@ -221,7 +228,7 @@
 
         <RadioButton
             android:id="@+id/hacerComidaRadioButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingVertical="16dp"
             android:text="@string/cook_food"
@@ -233,11 +240,14 @@
 
     <Button
         android:id="@+id/programarTareaButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:textSize="16sp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/rectangular_button"
         app:backgroundTint="@null"
+        android:textColor="@color/black"
         android:text="@string/schedule_task_button"
         />
 

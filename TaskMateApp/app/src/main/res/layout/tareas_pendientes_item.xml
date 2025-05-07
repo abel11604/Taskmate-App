@@ -29,7 +29,7 @@ android:padding="16dp">
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Planchar la ropa"
+        android:text="@string/iron_clothes"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold" />
@@ -45,11 +45,11 @@ android:padding="16dp">
             android:id="@+id/tvHoraTarea"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1:30pm"
+            android:text="@string/hour_task"
             android:textColor="@android:color/black"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:layout_marginRight="14dp"
+            android:layout_marginEnd="14dp"
             />
 
         <LinearLayout
@@ -61,14 +61,13 @@ android:padding="16dp">
         android:paddingVertical="4dp"
         android:background="@drawable/bg_state_indicator" >
 
-
-
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginStart="8dp"
             android:src="@drawable/ic_check"
-            android:tint="@android:color/white" />
+            android:contentDescription="@string/image_description"
+            app:tint="@color/white" />
     </LinearLayout>
 </LinearLayout>
 </LinearLayout>
@@ -77,7 +76,7 @@ android:padding="16dp">
     android:id="@+id/tvTaskDescription"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="Esta es la descripción detallada de la actividad. Aquí se pueden incluir instrucciones, notas u otra información relevante."
+    android:text="@string/text_example"
     android:textColor="@color/black"
     android:textSize="14sp"
     android:paddingTop="8dp"

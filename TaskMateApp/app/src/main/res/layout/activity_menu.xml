@@ -35,7 +35,6 @@
         app:layout_constraintStart_toStartOf="parent"
         android:background="@android:color/white"
         app:menu="@menu/menu_button"
-
         >
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>

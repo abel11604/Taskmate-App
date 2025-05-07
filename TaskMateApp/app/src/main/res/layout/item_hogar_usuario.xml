@@ -20,7 +20,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Nombre del hogar"
+            android:text="@string/house_name"
             android:textSize="16sp"
             android:textColor="@android:color/black" />
 
@@ -28,8 +28,8 @@
             android:id="@+id/btnSeleccionarHogar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Entrar"
-            android:textColor="@android:color/white"
+            android:text="@string/enter"
+            android:textColor="@android:color/black"
             android:backgroundTint="@color/lightSkyBlue"
             android:textSize="14sp" />
 

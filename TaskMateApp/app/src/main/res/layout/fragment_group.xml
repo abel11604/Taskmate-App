@@ -8,13 +8,13 @@
     >
 
     <LinearLayout
-
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@color/white"
-    android:orientation="vertical"
-    tools:context=".members">
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context=".members">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -36,7 +36,7 @@
             android:textSize="20sp"
             android:layout_marginTop="40dp"
             android:layout_gravity="center"
-            android:text="nombre"
+            android:text="@string/name_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -44,6 +44,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
+            android:contentDescription="@string/image_description"
             android:src="@drawable/baseline_home_24"/>
 
         <TextView

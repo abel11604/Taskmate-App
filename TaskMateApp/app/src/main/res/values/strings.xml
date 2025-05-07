@@ -19,12 +19,14 @@
     <string name="register_button2">Registrar</string>
     <string name="program_tasks_menu">Programar actividades</string>
     <string name="tasks_label">Tareas</string>
+    <string name="hour_task">00:00</string>
 
     <string name="save_changes_button">Guardar cambios</string>
     <string name="cancel_button">Cancelar</string>
     <string name="team_title">Equipo</string>
     <string name="members_label">Miembros</string>
     <string name="home_code">Codigo casa:</string>
+    <string name="home_name">Nombre de la casa:</string>
     <string name="admin_permissions_title">Permisos de administrados</string>
     <string name="admin_permissions_description">Al otorgarle permisos de administrador a cualquier usuario, este podrá editar, programar, asignar, eliminar y agregar tareas</string>
     <string name="tasks_history_title">Tareas</string>
@@ -74,5 +76,51 @@
 
     //tareas semanles activity
     <string name="weekly_tasks_title">Tareas semanales</string>
+
+    //Actualizar tarea
+    <string name="btn_actualizar_tarea">Actualizar tarea</string>
+
+    //Image label
+    <string name="image_description">Image label</string>
+
+    //Hint text
+    <string name="hint"> </string>
+
+    //actualizar tarea strings screen
+    <string name="nombre_de_la_actividad">Nombre de la actividad</string>
+    <string name="placeholder_activity_name">Nombre corto que describe la actividad a realizar</string>
+    <string name="descripcion_de_la_actividad">Descripción de la actividad</string>
+    <string name="description_field_activity_update">Descripción</string>
+
+    //actualizar usuario strings screen
+    <string name="name_example">name example</string>
+    <string name="error_invalid_data">Error: datos inválidos</string>
+
+    //historial strings screen
+    <string name="text_example">text example</string>
+    <string name="history_status_pending">Pendiente</string>
+    <string name="history_status_late">No se hizo</string>
+    <string name="history_month">Month</string>
+    <string name="history_actual_date">Day</string>
+
+    //fragment screen
+    <string name="nombre_de_usuaro">Nombre del usuario</string>
+
+    //Fragment inicio screen
+    <string name="sun_day">Dom</string>
+    <string name="mon_day">Lun</string>
+    <string name="tue_day">Mar</string>
+    <string name="wed_day">Mie</string>
+    <string name="thu_day">Jue</string>
+    <string name="fri_day">Vie</string>
+    <string name="sat_day">Sab</string>
+    <string name="day_of_week">Day</string>
+
+    //item user home screen
+    <string name="enter">Entrar</string>
+    <string name="house_name">Nombre del hogar</string>
+
+    //item miembro home screen
+    <string name="role_admin">Administrador</string>
 
 </resources>

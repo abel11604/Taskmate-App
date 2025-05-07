@@ -24,6 +24,7 @@
             android:scaleType="centerCrop"
             android:background="@drawable/circle_mask"
             android:clipToOutline="true"
+            android:contentDescription="@string/image_description"
             android:layout_marginEnd="12dp" />
 
         <TextView
@@ -31,7 +32,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Julian Puerta"
+            android:text="@string/name_label"
             android:textStyle="bold"
             android:textSize="16sp"
             android:textColor="#000000" />
@@ -40,9 +41,9 @@
             android:id="@+id/user_role"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Administrador"
+            android:text="@string/role_admin"
             android:textStyle="bold"
-            android:textColor="@color/lightSkyBlue"
+            android:textColor="@color/black"
             android:background="@color/lightBlue"
             android:paddingHorizontal="12dp"
             android:paddingVertical="4dp"

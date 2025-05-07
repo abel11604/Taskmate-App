@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    android:padding="24dp">
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/textView"
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:gravity="center"
-        android:text=" "
+        android:text="@string/hint"
         />
 
     <ImageView
@@ -24,7 +24,8 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="32dp"
         android:src="@drawable/account_circle"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/image_description"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -35,11 +36,13 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nameEditText"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Jullian"
+            android:text="@string/name_example"
             android:textSize="16sp" />
+
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -48,7 +51,7 @@
         android:id="@+id/errorTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Error: datos inválidos"
+        android:text="@string/error_invalid_data"
         android:textColor="@color/red"
         android:textSize="14sp"
         android:layout_gravity="center"
@@ -59,12 +62,13 @@
     <Button
         android:id="@+id/updateButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
         android:background="@drawable/rectangular_button"
         android:paddingHorizontal="48dp"
+        android:textSize="18sp"
         android:text="@string/update_button"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/black"
         app:backgroundTint="@null" />
 </LinearLayout>

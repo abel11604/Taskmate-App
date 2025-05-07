@@ -1,208 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical"
     tools:context=".NuevaTareaCasaActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:padding="16dp">
 
+        <!-- Botón atrás -->
         <ImageView
             android:id="@+id/backButton"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/back_button" />
-    </LinearLayout>
+            android:src="@drawable/back_button"
+            android:contentDescription="@string/image_description" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/tag_icon_with_bg"
-            />
-
+        <!-- Info nombre actividad -->
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Nombre de la actividad"
-                android:textColor="@color/grey"
-                android:textSize="16sp" />
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/tag_icon_with_bg"
+                android:contentDescription="@string/image_description" />
 
-            <TextView
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Nombre corto que describe la actividad a realizar"
-                android:textColor="@color/mediumGrey"
-                android:textSize="14sp" />
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nombre_de_la_actividad"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/placeholder_activity_name"
+                    android:textColor="@color/grey"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        >
-
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:backgroundTint="@color/lightGrey2"
-            android:scaleType="fitXY"
-            android:background="@color/black"
-            />
-
+        <!-- Campo nombre (con hint y label) -->
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nombre"
-            android:textColor="@color/lightSkyGrey"
+            android:text="@string/name_label"
+            android:textColor="@color/black"
             android:textSize="14sp"
-            android:layout_marginBottom="50dp"/>
+            android:layout_marginTop="12dp" />
 
         <EditText
             android:id="@+id/activityNameInput"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:background="@null"
-            android:hint=" "
-            android:imeOptions="actionDone"
+            android:layout_height="50dp"
+            android:hint="@string/name_label"
+            android:background="#f5f5f5"
+            android:padding="12dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
             android:inputType="text"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:textColor="@color/grey"
-            android:textSize="16sp" />
-    </RelativeLayout>
+            android:autofillHints="name"
+            android:importantForAutofill="yes" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/tag_icon_with_bg"
-            />
-
+        <!-- Info descripción actividad -->
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Descripcion de la actividad"
-                android:textColor="@color/grey"
-                android:textSize="16sp" />
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/tag_icon_with_bg"
+                android:contentDescription="@string/image_description" />
 
-            <TextView
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Descripción de la actividad"
-                android:textColor="@color/mediumGrey"
-                android:textSize="14sp" />
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/descripcion_de_la_actividad"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/descripcion_de_la_actividad"
+                    android:textColor="@color/grey"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        >
-
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:backgroundTint="@color/lightGrey2"
-            android:scaleType="fitXY"
-            android:background="@color/black"
-            />
-
+        <!-- Campo descripción -->
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Descripción"
-            android:textColor="@color/lightSkyGrey"
+            android:text="@string/description_field_activity_update"
+            android:textColor="@color/black"
             android:textSize="14sp"
-            android:layout_marginBottom="50dp"/>
+            android:layout_marginTop="12dp" />
 
         <EditText
             android:id="@+id/activityDescInput"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:background="@null"
-            android:hint=" "
-            android:imeOptions="actionDone"
+            android:layout_height="50dp"
+            android:hint="@string/description_field_activity_update"
+            android:background="#f5f5f5"
+            android:padding="12dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
             android:inputType="text"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:textColor="@color/grey"
-            android:textSize="16sp" />
+            android:importantForAutofill="no" />
 
-    </RelativeLayout>
-
-
-    <Button
-        android:id="@+id/btnAgregar"
-        android:layout_width="340dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="100dp"
-        android:background="@drawable/rectangular_button"
-        android:enabled="false"
-        android:paddingStart="32dp"
-        android:paddingEnd="32dp"
-        android:text="@string/create_task_button"
-        android:textColor="#FFFFFF"
-        app:backgroundTint="@null" />
-    <TextView
-        android:id="@+id/errorTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Error: datos inválidos"
-        android:textColor="@color/red"
-        android:textSize="14sp"
-        android:layout_gravity="center"
-        android:visibility="gone"
-        android:paddingTop="16dp"/>
-</LinearLayout>
+        <!-- Botón Actualizar -->
+        <Button
+            android:id="@+id/btnActualizar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/rectangular_button"
+            android:enabled="false"
+            android:text="@string/btn_actualizar_tarea"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:backgroundTint="@null" />
+    </LinearLayout>
+</ScrollView>
