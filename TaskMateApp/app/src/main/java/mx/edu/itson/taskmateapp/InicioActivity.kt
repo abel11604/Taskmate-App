@@ -101,7 +101,7 @@ class InicioActivity : AppCompatActivity() {
                                     usuariosAsignados = usuarios,
                                     horaRealizacion = horaRealizacion,
                                     estado = tareaMap["estado"] as? String ?: "",
-                                    hogarId = tareaMap["hogarId"] as? String ?: ""
+
                                 )
                             }
 
@@ -274,7 +274,7 @@ class InicioActivity : AppCompatActivity() {
                                     usuariosAsignados = usuarios,
                                     horaRealizacion = horaRealizacion,
                                     estado = tareaMap["estado"] as? String ?: "",
-                                    hogarId = tareaMap["hogarId"] as? String ?: ""
+
                                 )
                             }
 

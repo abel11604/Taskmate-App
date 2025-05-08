@@ -9,5 +9,23 @@
 
     </style>
     <style name="Theme.TaskMateApp" parent="Base.Theme.TaskMateApp" />
+    <!-- Tema personalizado solo para el DatePickerDialog -->
+    <style name="CustomDatePickerDialog" parent="Theme.Material3.DayNight.Dialog">
+        <!-- Fondo blanco y texto en negro -->
+        <item name="android:background">@color/white</item>
+        <item name="android:textColorPrimary">@color/black</item>
 
+        <!-- Botones personalizados -->
+        <item name="android:buttonBarPositiveButtonStyle">@style/DatePickerButton</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/DatePickerButton</item>
+
+        <!-- Color de selección (círculo del día seleccionado) -->
+        <item name="colorPrimary">@color/lightSkyBlue</item> <!-- fondo del día seleccionado -->
+        <item name="android:colorAccent">@color/lightSkyBlue</item> <!-- en caso de fallback -->
+    </style>
+
+    <!-- Estilo para los botones del DatePicker -->
+    <style name="DatePickerButton" parent="android:Widget.Material.Button">
+        <item name="android:textColor">@color/black</item> <!-- texto de los botones -->
+    </style>
 </resources>

@@ -10,78 +10,70 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/white"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:background="@color/white">
 
-        <!-- Título de la sección -->
+        <!-- Título -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/program_tasks_menu"
+            android:text="Programar actividades"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="8dp"/>
 
-        <!-- Día seleccionado: Lun 24 -->
+        <!-- Fecha (selector) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:paddingBottom="16dp">
+            android:layout_marginBottom="8dp">
 
             <TextView
+                android:id="@+id/fechaSeleccionadaTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/day_of_week"
+                android:text="Lun 24"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:layout_marginEnd="8dp"/>
-
+                android:drawableEnd="@drawable/ic_arrow_drop_down"
+                android:drawablePadding="4dp"
+                android:clickable="true"
+                android:focusable="true" />
         </LinearLayout>
 
-
-        <LinearLayout
-            android:id="@+id/layoutTarea"
+        <!-- Línea divisora -->
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-        android:padding="16dp"
-        android:layout_marginBottom="16dp">
+            android:layout_height="1dp"
+            android:background="#CCCCCC"
+            android:layout_marginBottom="8dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/iron_clothes"
-            android:textSize="16sp"
-            android:textColor="@color/black" />
+        <!-- Lista de tareas programadas -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerTareasProgramadas"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            tools:listitem="@layout/item_tarea_asignada" />
 
-        <!-- Aquí se puede poner una imagen o un ícono de usuario (como el de la imagen) -->
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_user"
-            android:contentDescription="@string/image_description"
-            android:layout_marginStart="8dp"/>
+        <!-- Espacio inferior para el botón flotante -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="56dp"/>
+    </LinearLayout>
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:contentDescription="@string/image_description"
-                android:src="@drawable/ic_check" />
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/fab_add_task"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:src="@drawable/baseline_add"
-            android:layout_gravity="end|bottom"
-            android:layout_marginEnd="16dp"
-            android:contentDescription="@string/image_description"
-            android:layout_marginBottom="16dp"/>
-</LinearLayout>
-
+    <!-- Botón flotante (absoluto en la esquina) -->
+    <ImageView
+        android:id="@+id/fab_add_task"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:src="@drawable/baseline_add"
+        android:backgroundTint="@color/lightSkyBlue"
+        android:contentDescription="@string/image_description" />
 </FrameLayout>
