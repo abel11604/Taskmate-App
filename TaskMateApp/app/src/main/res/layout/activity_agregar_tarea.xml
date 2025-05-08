@@ -1,254 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:orientation="vertical"
-    android:padding="16dp">
-
-    <ImageView
-        android:id="@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:contentDescription="@string/image_description"
-        android:src="?attr/actionModeCloseDrawable" />
+    android:background="#FFFFFF">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:baselineAligned="false">
+        android:orientation="vertical"
+        android:padding="16dp">
 
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/schedule_task_title"
-                android:textColor="#212121"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/select_options"
-                android:textColor="#757575"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:orientation="vertical">
-
-        <RadioButton
-            android:id="@+id/repeatWeeklyRadioButton"
+        <!-- Botón Atrás -->
+        <ImageView
+            android:id="@+id/backButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingVertical="12dp"
-            android:text="@string/repeat_task_option"
-            android:textColor="#212121"
-            android:textSize="14sp" />
+            android:src="?attr/actionModeCloseDrawable"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="Volver" />
 
-        <LinearLayout
+        <!-- Título de programación -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Programa la tarea"
+            android:textStyle="bold"
+            android:textColor="#212121"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Elige entre estas opciones para programar la tarea"
+            android:textColor="#757575"
+            android:textSize="12sp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Repetir o no -->
+        <RadioGroup
+            android:id="@+id/repetirRadioGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <RadioButton
-                android:id="@+id/noRepeatRadioButton"
+                android:id="@+id/repetirSemanalRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingVertical="12dp"
-                android:text="@string/no_repeat_option"
-                android:textColor="#212121"
-                android:textSize="14sp" />
+                android:text="Repetir semanalmente" />
 
-            <ImageView
-                android:id="@+id/calendarIcon"
-                android:layout_width="47dp"
-                android:layout_height="13dp"
-                android:contentDescription="@string/image_description"
-                android:layout_marginStart="8dp" />
-
-        </LinearLayout>
-
-    </RadioGroup>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:baselineAligned="false">
-
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/members_label"
-                android:textColor="#212121"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/select_members_label"
-                android:textColor="#757575"
-                android:textSize="12sp" />
+                <RadioButton
+                    android:id="@+id/noRepetirRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No repetir" />
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/fechaSeleccionada"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lun 24"
+                    android:layout_marginStart="8dp"
+                    android:textColor="#000"
+                    android:visibility="gone"
+                    android:background="@drawable/rounded_lightgrey_bg"
+                    android:padding="4dp" />
+            </LinearLayout>
+        </RadioGroup>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:scaleType="centerCrop"
-            android:contentDescription="@string/image_description"
-            android:src="@drawable/panda1" />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <ImageView
-            android:id="@+id/addMemberButton"
-            android:contentDescription="@string/image_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:contentDescription="@string/image_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tasks_history_title"
-                android:textColor="#212121"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/select_task_label"
-                android:textColor="#757575"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <RadioGroup
-        android:id="@+id/tasksRadioGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <RadioButton
-            android:id="@+id/ordenarCuartoRadioButton"
+        <!-- Hora de realización -->
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingVertical="16dp"
-            android:text="@string/room"
+            android:text="Selecciona una hora"
             android:textColor="#212121"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="4dp" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E0E0E0" />
-
-        <RadioButton
-            android:id="@+id/plancharRopaRadioButton"
+        <TextView
+            android:id="@+id/horaSeleccionada"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingVertical="16dp"
-            android:text="@string/iron_clothes"
-            android:textColor="#212121"
+            android:text="08:00 AM"
+            android:background="@drawable/rounded_lightblue_bg"
+            android:padding="8dp"
+            android:textColor="#000000"
             android:clickable="true"
-            android:textSize="14sp" />
+            android:focusable="true"
+            android:layout_marginBottom="16dp" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E0E0E0" />
-
-        <RadioButton
-            android:id="@+id/hacerComidaRadioButton"
+        <!-- Miembros -->
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingVertical="16dp"
-            android:text="@string/cook_food"
+            android:text="Miembros"
+            android:textStyle="bold"
             android:textColor="#212121"
-            android:clickable="true"
-            android:textSize="14sp" />
+            android:textSize="16sp"
+            android:layout_marginTop="16dp" />
 
-    </RadioGroup>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/miembrosRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="113dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal"
+            android:scrollbars="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_miembro" />
 
-    <Button
-        android:id="@+id/programarTareaButton"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:textSize="16sp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/rectangular_button"
-        app:backgroundTint="@null"
-        android:textColor="@color/black"
-        android:text="@string/schedule_task_button"
-        />
+        <!-- Tareas -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tareas"
+            android:textStyle="bold"
+            android:textColor="#212121"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
 
-</LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tareasRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="146dp"
+            android:scrollbars="vertical"
+            tools:listitem="@layout/item_tarea" />
+
+        <Button
+            android:id="@+id/programarTareaButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Programar tarea"
+            android:textColor="@color/black"
+            android:background="@drawable/rectangular_button"
+            app:backgroundTint="@null"
+            android:layout_marginTop="32dp" />
+
+    </LinearLayout>
+</ScrollView>
