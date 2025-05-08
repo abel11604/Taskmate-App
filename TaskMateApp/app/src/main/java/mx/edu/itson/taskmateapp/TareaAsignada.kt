@@ -7,6 +7,5 @@ data class TareaAsignada(
     val tarea: Tarea,
     var usuariosAsignados: List<UsuarioAsignado>,
     var horaRealizacion: LocalDateTime,
-    var estado: String,
-    val hogarId: String
+    var estado: String
 )

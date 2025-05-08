@@ -1,5 +1,6 @@
 package mx.edu.itson.taskmateapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
@@ -63,6 +64,11 @@ class ActualizarRolActivity : AppCompatActivity() {
                 })
                 .addOnSuccessListener {
                     Toast.makeText(this, "Rol actualizado correctamente", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, MenuActivity::class.java).apply {
+                        putExtra("hogar", hogar.copy(usuariosAsignados = nuevosUsuariosAsignados))
+                        putExtra("usuario", intent.getSerializableExtra("usuario"))
+                    }
+                    startActivity(intent)
                     finish()
                 }
                 .addOnFailureListener {
