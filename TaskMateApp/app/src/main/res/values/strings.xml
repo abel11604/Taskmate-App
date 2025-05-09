@@ -63,6 +63,7 @@
     <string name="iron_clothes">Planchar la ropa</string>
     <string name="cook_food">Hacer comida</string>
     <string name="schedule_task_button">Programar tarea</string>
+    <string name="choose_an_hour">Selecciona una hora</string>
 
     //Configuracion Activity
     <string name="settings_title">Configuración</string>
@@ -122,5 +123,17 @@
 
     //item miembro home screen
     <string name="role_admin">Administrador</string>
+
+    //update rol screen
+    <string name="update_rol_name">Nombre del usuario</string>
+    <string name="update_rol_admin_permissions">Permisos del administrador</string>
+    <string name="update_rol_manage_description">Gestiona los derechos de administrador</string>
+    <string name="update_rol_description_desc">Al otorgar permisos de Moderador a cualquier usuario, este podrá editar, programar, asignar, eliminar y agregar tareas.</string>
+    <string name="uldate_rol_button_content">Actualizar Rol</string>
+
+    <string name="desc_back_button">Volver</string>
+
+    //item asigned task screen
+    <string name="asigned_task_name">Nombre de la tarea</string>
 
 </resources>

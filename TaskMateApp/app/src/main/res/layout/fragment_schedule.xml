@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,11 +18,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Programar actividades"
+            android:text="@string/program_tasks_menu"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="8dp" />
 
         <!-- Fecha (selector) -->
         <LinearLayout
@@ -34,15 +35,19 @@
             <TextView
                 android:id="@+id/fechaSeleccionadaTextView"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Lun 24"
+                android:layout_height="48dp"
+                android:minWidth="48dp"
+                android:gravity="center_vertical"
+                android:text="@string/day_of_week"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:drawableEnd="@drawable/ic_arrow_drop_down"
+                app:drawableEndCompat="@drawable/ic_arrow_drop_down"
                 android:drawablePadding="4dp"
                 android:clickable="true"
-                android:focusable="true" />
+                android:focusable="true"
+                android:paddingHorizontal="12dp" />
+
         </LinearLayout>
 
         <!-- Línea divisora -->
@@ -63,7 +68,7 @@
         <!-- Espacio inferior para el botón flotante -->
         <View
             android:layout_width="match_parent"
-            android:layout_height="56dp"/>
+            android:layout_height="56dp" />
     </LinearLayout>
 
     <!-- Botón flotante (absoluto en la esquina) -->
@@ -74,6 +79,6 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:src="@drawable/baseline_add"
-        android:backgroundTint="@color/lightSkyBlue"
-        android:contentDescription="@string/image_description" />
+        android:contentDescription="@string/image_description"
+        app:tint="@color/black" />
 </FrameLayout>

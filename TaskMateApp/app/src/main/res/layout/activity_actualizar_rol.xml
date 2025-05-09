@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="24dp"
     android:background="@color/white">
@@ -14,10 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:src="?attr/actionModeCloseDrawable"
-        android:contentDescription="@string/image_description"
-        />
-
-
+        android:contentDescription="@string/image_description" />
 
     <!-- Avatar del usuario -->
     <ImageView
@@ -29,6 +26,7 @@
         android:src="@drawable/account_circle"
         android:background="@drawable/circle_mask"
         android:scaleType="centerCrop"
+        android:contentDescription="@string/image_description"
         android:clipToOutline="true" />
 
     <TextView
@@ -37,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp"
-        android:text="Nombre del usuario"
+        android:text="@string/update_rol_name"
         android:textSize="16sp"
         android:textStyle="bold"
         android:textColor="@color/black" />
@@ -46,22 +44,20 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Permisos de administradores"
+        android:text="@string/update_rol_admin_permissions"
         android:textSize="16sp"
         android:textStyle="bold"
         android:layout_marginTop="32dp"
         android:textColor="@color/black" />
 
-
-
     <!-- Subtítulo -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Gestiona los derechos de administrador"
+        android:text="@string/update_rol_manage_description"
         android:textColor="@color/black"
-    android:textSize="14sp"
-    android:layout_marginBottom="16dp" />
+        android:textSize="14sp"
+        android:layout_marginBottom="16dp" />
 
     <!-- Descripción y Switch -->
     <LinearLayout
@@ -69,34 +65,38 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:layout_marginBottom="16dp">
-
+        android:layout_marginBottom="16dp"
+        android:minHeight="48dp"
+        android:paddingVertical="8dp">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Al otorgar permisos de Moderador a cualquier usuario, este podrá editar, programar, asignar, eliminar y agregar tareas."
+            android:text="@string/update_rol_description_desc"
             android:textColor="@color/black"
             android:textSize="14sp" />
 
-        <Switch
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switchRol"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:minWidth="48dp"
+            android:padding="8dp" />
     </LinearLayout>
 
     <!-- Botón Actualizar -->
     <Button
         android:id="@+id/btnActualizarRol"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Actualizar Rol"
+        android:layout_gravity="center"
+        android:text="@string/uldate_rol_button_content"
         android:textColor="@color/black"
-        app:backgroundTint="@null"
         android:textSize="16sp"
         android:background="@drawable/rectangular_button"
-        android:layout_marginTop="48dp" />
+        android:layout_marginTop="48dp"
+        app:backgroundTint="@null" />
 
 </LinearLayout>

@@ -141,7 +141,8 @@
         <!-- Botón Actualizar -->
         <Button
             android:id="@+id/btnAgregar"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
+            android:layout_gravity="center"
             android:layout_height="50dp"
             android:layout_marginTop="48dp"
             android:background="@drawable/rectangular_button"
@@ -155,7 +156,7 @@
             android:id="@+id/errorTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Error: datos inválidos"
+            android:text="@string/error_invalid_data"
             android:textColor="@color/red"
             android:textSize="14sp"
             android:layout_gravity="center"
