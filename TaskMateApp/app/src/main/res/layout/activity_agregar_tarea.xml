@@ -19,13 +19,13 @@
             android:layout_height="wrap_content"
             android:src="?attr/actionModeCloseDrawable"
             android:layout_marginBottom="16dp"
-            android:contentDescription="@string/desc_back_button" />
+            android:contentDescription="Volver" />
 
         <!-- Título de programación -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/schedule_task_title"
+            android:text="Programa la tarea"
             android:textStyle="bold"
             android:textColor="#212121"
             android:textSize="16sp" />
@@ -33,7 +33,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/select_options"
+            android:text="Elige entre estas opciones para programar la tarea"
             android:textColor="#757575"
             android:textSize="12sp"
             android:layout_marginBottom="12dp" />
@@ -49,7 +49,7 @@
                 android:id="@+id/repetirSemanalRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/repeat_task_option" />
+                android:text="Repetir semanalmente" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -61,13 +61,13 @@
                     android:id="@+id/noRepetirRadio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/no_repeat_option" />
+                    android:text="No repetir" />
 
                 <TextView
                     android:id="@+id/fechaSeleccionada"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/mon_day"
+                    android:text="Lun 24"
                     android:layout_marginStart="8dp"
                     android:textColor="#000"
                     android:visibility="gone"
@@ -80,7 +80,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/choose_an_hour"
+            android:text="Selecciona una hora"
             android:textColor="#212121"
             android:textSize="14sp"
             android:layout_marginTop="16dp"
@@ -89,8 +89,8 @@
         <TextView
             android:id="@+id/horaSeleccionada"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:text="@string/hour_task"
+            android:layout_height="wrap_content"
+            android:text="08:00 AM"
             android:background="@drawable/rounded_lightblue_bg"
             android:padding="8dp"
             android:textColor="#000000"
@@ -102,7 +102,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/membros_label"
+            android:text="Miembros"
             android:textStyle="bold"
             android:textColor="#212121"
             android:textSize="16sp"
@@ -111,8 +111,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/miembrosRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="false"
+            android:layout_height="113dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
             android:orientation="horizontal"
@@ -124,7 +123,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/tasks_label"
+            android:text="Tareas"
             android:textStyle="bold"
             android:textColor="#212121"
             android:textSize="16sp"
@@ -133,23 +132,19 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/tareasRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="false"
+            android:layout_height="146dp"
             android:scrollbars="vertical"
             tools:listitem="@layout/item_tarea" />
 
         <Button
             android:id="@+id/programarTareaButton"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/schedule_task_title"
+            android:text="Programar tarea"
             android:textColor="@color/black"
-            android:layout_gravity="center"
             android:background="@drawable/rectangular_button"
             app:backgroundTint="@null"
-            android:textSize="16sp"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginTop="32dp" />
 
     </LinearLayout>
 </ScrollView>
