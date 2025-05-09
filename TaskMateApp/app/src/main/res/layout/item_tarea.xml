@@ -30,9 +30,12 @@
             android:id="@+id/radioSeleccion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/lightSkyBlue"
+            app:buttonTint="@color/lightSkyBlue"
             android:focusable="false"
-            android:focusableInTouchMode="false" />
+            android:focusableInTouchMode="false"
+            android:clickable="false"
+
+            />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

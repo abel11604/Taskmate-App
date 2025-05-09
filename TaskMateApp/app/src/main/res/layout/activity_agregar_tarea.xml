@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -33,72 +32,72 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Elige entre estas opciones para programar la tarea"
+            android:text="Elige la fecha y hora para la tarea"
             android:textColor="#757575"
             android:textSize="12sp"
             android:layout_marginBottom="12dp" />
 
-        <!-- Repetir o no -->
-        <RadioGroup
-            android:id="@+id/repetirRadioGroup"
+        <!-- Selección de fecha y hora -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="16dp">
 
-            <RadioButton
-                android:id="@+id/repetirSemanalRadio"
+            <!-- Icono calendario -->
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_calendar"
+                android:contentDescription="Calendario"
+                android:layout_marginEnd="8dp" />
+
+            <!-- TextView de fecha -->
+            <TextView
+                android:id="@+id/fechaSeleccionada"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Repetir semanalmente" />
+                android:text="Seleccionafecha"
+                android:textSize="14sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/rounded_lightblue_bg"
+                android:padding="8dp"
+                android:textColor="#000000"
+                android:clickable="true"
+                android:focusable="true" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <!-- Espacio entre el TextView de fecha y hora -->
+            <View
+                android:layout_width="16dp"
+                android:layout_height="wrap_content" />
+
+            <!-- Icono reloj -->
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_clock"
+                android:contentDescription="Reloj"
+                android:layout_marginEnd="8dp" />
+
+            <!-- TextView de hora -->
+            <TextView
+                android:id="@+id/horaSeleccionada"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:layout_marginTop="23dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/rounded_lightblue_bg"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="8dp"
+                android:text="Selecciona hora"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+        </LinearLayout>
 
-                <RadioButton
-                    android:id="@+id/noRepetirRadio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="No repetir" />
-
-                <TextView
-                    android:id="@+id/fechaSeleccionada"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Lun 24"
-                    android:layout_marginStart="8dp"
-                    android:textColor="#000"
-                    android:visibility="gone"
-                    android:background="@drawable/rounded_lightgrey_bg"
-                    android:padding="4dp" />
-            </LinearLayout>
-        </RadioGroup>
-
-        <!-- Hora de realización -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Selecciona una hora"
-            android:textColor="#212121"
-            android:textSize="14sp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="4dp" />
-
-        <TextView
-            android:id="@+id/horaSeleccionada"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="08:00 AM"
-            android:background="@drawable/rounded_lightblue_bg"
-            android:padding="8dp"
-            android:textColor="#000000"
-            android:clickable="true"
-            android:focusable="true"
-            android:layout_marginBottom="16dp" />
-
-        <!-- Miembros -->
+        <!-- Miembros (RecyclerView) -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -119,7 +118,7 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_miembro" />
 
-        <!-- Tareas -->
+        <!-- Tareas (RecyclerView) -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -136,6 +135,7 @@
             android:scrollbars="vertical"
             tools:listitem="@layout/item_tarea" />
 
+        <!-- Botón Programar tarea -->
         <Button
             android:id="@+id/programarTareaButton"
             android:layout_width="match_parent"

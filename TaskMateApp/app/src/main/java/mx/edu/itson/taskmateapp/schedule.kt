@@ -68,7 +68,10 @@ class schedule : Fragment() {
         }
 
         addButton.setOnClickListener {
-            val intent = Intent(activity, AgregarTareaActivity::class.java)
+            val intent = Intent(activity, AgregarTareaActivity::class.java).apply {
+                putExtra("hogar", hogar)
+                putExtra("usuario", usuario)
+            }
             startActivity(intent)
         }
 
