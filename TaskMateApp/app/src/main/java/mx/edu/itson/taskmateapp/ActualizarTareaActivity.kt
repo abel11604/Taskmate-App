@@ -91,6 +91,7 @@ import com.google.firebase.firestore.FirebaseFirestore
                      val intent = Intent(this, MenuActivity::class.java).apply {
                          putExtra("hogar", hogar.copy(tareas = nuevasTareas))
                          putExtra("usuario", intent.getSerializableExtra("usuario"))
+                         putExtra("initial_fragment", "activities") // No necesitas 'intent.putExtra', ya lo haces con 'apply'
                      }
                      startActivity(intent)
                      finish()

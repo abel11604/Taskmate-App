@@ -2,6 +2,7 @@ package mx.edu.itson.taskmateapp
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -165,6 +166,12 @@ class AgregarTareaActivity : AppCompatActivity() {
             .update("tareasAsignadas", FieldValue.arrayUnion(tareaAsignada))
             .addOnSuccessListener {
                 Toast.makeText(this, "Tarea programada correctamente", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, MenuActivity::class.java).apply {
+                    putExtra("hogar", hogar) // Pasa el hogar actualizado
+                    putExtra("usuario", usuario) // Pasa el usuario
+                    putExtra("initial_fragment", "schedule") // Especifica el fragmento "schedule"
+                }
+                startActivity(intent)
                 finish()
             }
             .addOnFailureListener {

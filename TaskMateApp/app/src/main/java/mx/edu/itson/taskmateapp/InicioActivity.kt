@@ -128,7 +128,8 @@ class InicioActivity : AppCompatActivity() {
                                 recyclerView.adapter = HogarAdapter(hogaresDelUsuario, usuario) { hogarSeleccionado ->
                                     val intent = Intent(this, MenuActivity::class.java)
                                     intent.putExtra("usuario", usuario)
-                                    intent.putExtra("hogar", hogarSeleccionado)
+                                    intent.putExtra("hogar", hogar)
+                                    intent.putExtra("initial_fragment", "inicio")  // Pasamos el nombre del fragmento
                                     startActivity(intent)
                                 }
                             }
@@ -182,8 +183,9 @@ class InicioActivity : AppCompatActivity() {
                     )
 
                     val intent = Intent(this, MenuActivity::class.java)
-                    intent.putExtra("hogar", hogar)
                     intent.putExtra("usuario", usuario)
+                    intent.putExtra("hogar", hogar)
+                    intent.putExtra("initial_fragment", "inicio")  // Pasamos el nombre del fragmento
                     startActivity(intent)
                 }
                 .addOnFailureListener { e ->
@@ -295,8 +297,9 @@ class InicioActivity : AppCompatActivity() {
                             )
 
                             val intent = Intent(this, MenuActivity::class.java)
-                            intent.putExtra("hogar", hogar)
                             intent.putExtra("usuario", usuario)
+                            intent.putExtra("hogar", hogar)
+                            intent.putExtra("initial_fragment", "inicio")  // Pasamos el nombre del fragmento
                             startActivity(intent)
                         }.addOnFailureListener { e ->
                             errorTextView.text = "Error al unirse al hogar: ${e.message}"

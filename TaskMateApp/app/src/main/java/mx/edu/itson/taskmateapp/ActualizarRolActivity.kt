@@ -67,6 +67,7 @@ class ActualizarRolActivity : AppCompatActivity() {
                     val intent = Intent(this, MenuActivity::class.java).apply {
                         putExtra("hogar", hogar.copy(usuariosAsignados = nuevosUsuariosAsignados))
                         putExtra("usuario", intent.getSerializableExtra("usuario"))
+                        putExtra("initial_fragment", "members") // Aquí especificas que se debe mostrar el fragmento "members"
                     }
                     startActivity(intent)
                     finish()

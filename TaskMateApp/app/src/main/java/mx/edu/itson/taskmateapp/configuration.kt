@@ -42,7 +42,7 @@ class configuration : Fragment() {
         val cambiarHogarLayout: LinearLayout = rootView.findViewById(R.id.ll_cambiarHogar)
         val cambiarPerfilLayout: LinearLayout = rootView.findViewById(R.id.ll_cambiarPerfil)
         val usernameTextView: TextView = rootView.findViewById(R.id.username)
-
+        val cerrarSesionLayout: LinearLayout = rootView.findViewById(R.id.ll_cerrarSesion)
         usuario?.let {
             usernameTextView.text = it.username
         }
@@ -59,6 +59,13 @@ class configuration : Fragment() {
             intent.putExtra("usuario", usuario)
             intent.putExtra("hogar", hogar)
             startActivity(intent)
+        }
+
+        cerrarSesionLayout.setOnClickListener {
+            val intent = Intent(requireContext(), MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            requireActivity().finish()
         }
 
         return rootView

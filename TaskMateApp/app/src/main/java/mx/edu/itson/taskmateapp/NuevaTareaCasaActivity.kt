@@ -67,10 +67,10 @@ class NuevaTareaCasaActivity : AppCompatActivity() {
 
             hogarRef.update("tareas", tareasActualizadas)
                 .addOnSuccessListener {
-                    val intent = Intent(this, MenuActivity::class.java).apply {
-                        putExtra("hogar", hogar!!.copy(tareas = tareasActualizadas)) // esta madre es pa pasar el objeto actualizado
-                        putExtra("usuario", usuario)
-                    }
+                    val intent = Intent(this, MenuActivity::class.java)
+                    intent.putExtra("usuario", usuario)
+                    intent.putExtra("hogar", hogar)
+                    intent.putExtra("initial_fragment", "activities")  // Pasamos el nombre del fragmento
                     startActivity(intent)
                     finish()
                 }

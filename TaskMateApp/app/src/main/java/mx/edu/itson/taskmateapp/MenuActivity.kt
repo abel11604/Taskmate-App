@@ -14,13 +14,26 @@ class MenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        replaceFragment(inicio())
 
+        // Obtener los parámetros del Intent
         val usuario = intent.getSerializableExtra("usuario") as? Usuario
         val hogar = intent.getSerializableExtra("hogar") as? Hogar
-     //aqui ps dependiendo de que boton del menu piques se va a meter ese fragment al layout
-        binding.bottomNavigationView.setOnItemSelectedListener {
+        val initialFragment = intent.getStringExtra("initial_fragment") ?: "inicio" // Valor por defecto "inicio"
 
+        // Cargar el fragmento correspondiente
+        if (usuario != null && hogar != null) {
+            when (initialFragment) {
+                "inicio" -> replaceFragment(inicio.newInstance(usuario, hogar))
+                "activities" -> replaceFragment(activities.newInstance(usuario, hogar))
+                "schedule" -> replaceFragment(schedule.newInstance(usuario, hogar))
+                "members" -> replaceFragment(group.newInstance(usuario, hogar))
+                "configuration" -> replaceFragment(configuration.newInstance(usuario, hogar))
+                else -> replaceFragment(inicio.newInstance(usuario, hogar))  // En caso de que el String no coincida con ninguno
+            }
+        }
+
+        // Configurar el listener para el menú de navegación
+        binding.bottomNavigationView.setOnItemSelectedListener {
             if (usuario != null && hogar != null) {
                 when (it.itemId) {
                     R.id.page_inicio -> replaceFragment(inicio.newInstance(usuario, hogar))
@@ -33,16 +46,12 @@ class MenuActivity : AppCompatActivity() {
             }
             true
         }
-
     }
 
-    private fun replaceFragment(fragment : Fragment){
-
+    private fun replaceFragment(fragment: Fragment) {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frame_layout,fragment)
+        fragmentTransaction.replace(R.id.frame_layout, fragment)
         fragmentTransaction.commit()
-
-
     }
 }

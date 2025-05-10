@@ -1,5 +1,6 @@
 package mx.edu.itson.taskmateapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -69,9 +70,19 @@ class RegistroActivity : AppCompatActivity() {
                                     // Actualizar solo el campo "username" en el documento específico
                                     usuariosAsignadosRef.document(document.id).update("username", newUsername)
                                         .addOnSuccessListener {
-                                            // Confirmar que la actualización fue exitosa
+                                            // Confirmación del éxito de la actualización
                                             Toast.makeText(this, "Perfil actualizado", Toast.LENGTH_SHORT).show()
-                                            finish() // Regresar a la pantalla anterior
+
+                                            // Redirigir a MenuActivity y cargar el fragmento "configuration"
+                                            val intent = Intent(this, MenuActivity::class.java).apply {
+                                                putExtra("hogar", hogar) // Pasa el hogar actualizado
+                                                putExtra("usuario", usuario) // Pasa el usuario actualizado
+                                                putExtra("initial_fragment", "configuration") // Especifica que se debe cargar el fragmento "configuration"
+                                            }
+
+                                            // Iniciar MenuActivity y finalizar esta actividad
+                                            startActivity(intent)
+                                            finish()
                                         }
                                         .addOnFailureListener { e ->
                                             errorTextView.visibility = View.VISIBLE
