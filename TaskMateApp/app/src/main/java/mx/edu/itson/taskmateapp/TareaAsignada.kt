@@ -1,5 +1,6 @@
 package mx.edu.itson.taskmateapp
 
+import java.io.Serializable
 import java.time.LocalDateTime
 
 data class TareaAsignada(
@@ -8,4 +9,4 @@ data class TareaAsignada(
     var usuariosAsignados: List<UsuarioAsignado>,
     var horaRealizacion: LocalDateTime,
     var estado: String
-)
+): Serializable

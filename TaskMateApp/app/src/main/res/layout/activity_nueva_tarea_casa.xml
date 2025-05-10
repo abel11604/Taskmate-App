@@ -16,10 +16,11 @@
         <!-- Botón atrás -->
         <ImageView
             android:id="@+id/backButton"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/back_button"
-            android:contentDescription="@string/image_description" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="?attr/actionModeCloseDrawable"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="Volver" />
 
         <!-- Info nombre actividad -->
         <LinearLayout

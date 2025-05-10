@@ -58,7 +58,7 @@
                 android:id="@+id/fechaSeleccionada"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Seleccionafecha"
+                android:text="Fecha"
                 android:textSize="14sp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
@@ -92,7 +92,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:padding="8dp"
-                android:text="Selecciona hora"
+                android:text="Hora"
                 android:textColor="#000000"
                 android:textSize="14sp" />
         </LinearLayout>

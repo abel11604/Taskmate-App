@@ -88,11 +88,18 @@ class InicioActivity : AppCompatActivity() {
                                     )
                                 }
 
-                                val horaStr = tareaMap["horaRealizacion"] as? String ?: ""
+                                val horaMap = tareaMap["horaRealizacion"] as? Map<String, Any> ?: emptyMap()
                                 val horaRealizacion = try {
-                                    LocalDateTime.parse(horaStr)
+                                    val year = horaMap["year"] as? Int ?: 0
+                                    val month = horaMap["monthValue"] as? Int ?: 0
+                                    val day = horaMap["dayOfMonth"] as? Int ?: 0
+                                    val hour = horaMap["hour"] as? Int ?: 0
+                                    val minute = horaMap["minute"] as? Int ?: 0
+
+                                    // Construcción de LocalDateTime
+                                    LocalDateTime.of(year, month, day, hour, minute)
                                 } catch (e: Exception) {
-                                    LocalDateTime.now()
+                                    LocalDateTime.now() // En caso de que falle, usamos la hora actual
                                 }
 
                                 TareaAsignada(
@@ -101,8 +108,8 @@ class InicioActivity : AppCompatActivity() {
                                     usuariosAsignados = usuarios,
                                     horaRealizacion = horaRealizacion,
                                     estado = tareaMap["estado"] as? String ?: "",
-
                                 )
+
                             }
 
                             val hogar = Hogar(
@@ -133,7 +140,7 @@ class InicioActivity : AppCompatActivity() {
             }
         }
 
-//para crear casa
+        //para crear casa
         btnUnirseHogar.setOnClickListener {
             errorTextView.visibility = View.GONE
             val nombreCasa = editTextHomeName.text.toString().trim()
@@ -185,7 +192,7 @@ class InicioActivity : AppCompatActivity() {
                 }
         }
 
-  //para unirse a una casa
+        //para unirse a una casa
         btnRegistrarHogar.setOnClickListener {
             errorTextView.visibility = View.GONE
             val casaCodigo = codigoCasa.text.toString().trim()
@@ -274,7 +281,6 @@ class InicioActivity : AppCompatActivity() {
                                     usuariosAsignados = usuarios,
                                     horaRealizacion = horaRealizacion,
                                     estado = tareaMap["estado"] as? String ?: "",
-
                                 )
                             }
 

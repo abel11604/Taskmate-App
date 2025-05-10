@@ -60,6 +60,7 @@ dependencies {
     implementation ("at.favre.lib:bcrypt:0.9.0")
     implementation(libs.androidx.room.runtime.android)
     implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.recyclerview)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
